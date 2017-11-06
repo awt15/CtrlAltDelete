@@ -32,7 +32,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <!-- CUSTOM CSS -->
+    <link href="../customcss/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -105,34 +106,34 @@
                 <div class="panel-body">
                     <!-- ALL OF THESE NEEDS IDs -->
                     <form>
-                        <label>Project</label>
+                        <label class="bigLabel">Project</label>
                             <select name="Projects">
                                 <option value ="Project 1">Project 1</option>
                                 <option value ="Project 2">Project 2</option>
                                 <option value ="Project 3">Project 3</option>
                             </select>
                         <br/>
-                        <label>Due Date</label>
+                        <label class="bigLabel">Due Date</label>
                             <input type="Date">
                         <br/>
-                        <label>Priority</label>
+                        <label class="bigLabel">Priority</label>
                             <select name="Priority">
                                 <option value ="Low">Low</option>
                                 <option value ="Medium">Medium</option>
                                 <option value ="High">High</option>
                             </select>
                         <br/>
-                        <label>Title</label>
+                        <label class="bigLabel">Title</label>
                             <input class="text long-field" type="text">
                         <br/>
-                        <label>Assignee</label>
+                        <label class="bigLabel">Assignee</label>
                             <input class="text long-field" type="text">
                             <!-- we're going to need a suggestions field once they start typing a name to get a list of names  -->
                         <br/>
-                        <label>Task Description</label>
+                        <label class="bigLabel">Task Description</label>
                             <textarea class="form-control"></textarea>
                         <br/>
-                        <label>Attachments</label>
+                        <label class="bigLabel">Attachments</label>
                             <input type="file" accept="image/*|file_extension">
                     </form>
                 </div>
