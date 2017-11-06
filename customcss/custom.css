@@ -3,6 +3,9 @@
 	color: #0c090A;
 	padding: 3px;
 }
+.bigFont{
+    font-size: 20px;
+}
 .fixedtop{
     position: fixed;
     width: 100%;
