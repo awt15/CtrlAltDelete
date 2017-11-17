@@ -104,8 +104,41 @@
                     <h1 class="page-header">My Projects</h1>
                 </div>
             </div>
-        </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Project Lead</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#">Chinese American Student Organization</a>
+                        </td>
+                        <td>
+                            <a href="#">Anthony Tieu</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#">Vietnamese Student Association</a>
+                        </td>
+                        <td>
+                            <a href="#">Vita Tran</a>
+                        </td>
+                    </tr>
 
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-offset-8 col-sm-2">
+                    <a href="joinProject.php" type="submit" class="btn btn-info btn-block">Join A Project</a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="createProject.php" type="submit" class="btn btn-primary btn-block">Create A Project</a>
+                </div>
+            </div>
     </div>
     <!-- /#wrapper -->
 

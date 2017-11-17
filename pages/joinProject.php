@@ -37,7 +37,7 @@
         <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Create an Account</h1>
+                <h1 class="page-header">Join a Project</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -47,35 +47,19 @@
                 <!-- ALL OF THESE NEEDS IDs -->
                 <form style="font-size:120%;">
                     <div class="form-group">
-                        <label for="firstname">First name:</label>
-                        <input type="text" id="firstName" class="form-control">
+                        <label for="projectID">Project-ID:</label>
+                        <input type="text" id="projectID" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="lastname">Last name:</label>
-                        <input type="text" id="lastName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="emailaddress">Email Address:</label>
-                        <input type="text" id="emailAddress" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="text" id="password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmpassword">Confirm Password:</label>
-                        <input type="text" id="confirmPassword" class="form-control">
+                        <label for="projectKey">Project Key:</label>
+                        <input type="text" id="projectKey" class="form-control">
                     </div>
                 </form>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-sm-offset-10 col-sm-2">
-                        <a href="index.php" class="btn btn-lg btn-primary btn-block">Sign up</a>
+                        <a href="index.php" class="btn btn-lg btn-primary btn-block">Join</a>
                     </div>
                 </div>
             </div>
