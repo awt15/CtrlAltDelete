@@ -109,42 +109,45 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!-- ALL OF THESE NEEDS IDs -->
-                    <form>
-                        <label class="bigLabel">Project</label>
-                            <select name="Projects">
+                    <form style="font-side: 120%">
+                        <div class="form-group">
+                            <label for="project">Project:</label>
+                            <select id="project" class="form-control">
                                 <option value ="Project 1">Project 1</option>
                                 <option value ="Project 2">Project 2</option>
                                 <option value ="Project 3">Project 3</option>
                             </select>
-                        <br/>
-                        <label class="bigLabel">Due Date</label>
-                            <input type="Date">
-                        <br/>
-                        <label class="bigLabel">Priority</label>
-                            <select name="Priority">
+                        </div>
+                        <div class="form-group">
+                            <label for="dueDate">Due Date:  <label>
+                            <input type="Date" id="dueDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Priority:</label>
+                            <select id="priority" class="form-control">
                                 <option value ="Low">Low</option>
                                 <option value ="Medium">Medium</option>
                                 <option value ="High">High</option>
                             </select>
-                        <br/>
-                        <label class="bigLabel">Title</label>
-                            <input class="text long-field" type="text">
-                        <br/>
-                        <label class="bigLabel">Assignee</label>
-                            <input class="text long-field" type="text">
-                            <!-- we're going to need a suggestions field once they start typing a name to get a list of names  -->
-                        <br/>
-                        <label class="bigLabel">Task Description</label>
-                            <textarea class="form-control"></textarea>
-                        <br/>
-                        <label class="bigLabel">Attachments</label>
-                            <input type="file" accept="image/*|file_extension">
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="assignee">Assignee:</label>
+                            <input type="text" id="assignee" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="task">Task Description: </label>
+                            <input type="text long-field" id="task" class="form-control">
+                        </div>
                     </form>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-sm-offset-10 col-sm-2">
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary btn-block">Create Task</button>
                         </div>
                     </div>
                 </div>
