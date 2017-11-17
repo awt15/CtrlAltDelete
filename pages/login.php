@@ -57,8 +57,8 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
-                                <a href="createaccount.html" class="btn btn-lg btn-primary btn-block">Create Account</a>
+                                <a href="index.php" class="btn btn-lg btn-success btn-block">Login</a>
+                                <a href="createaccount.php" class="btn btn-lg btn-primary btn-block">Create Account</a>
                             </fieldset>
 			</form>
                     </div>

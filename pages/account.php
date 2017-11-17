@@ -49,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Ctrl Alt Delete</a>
+                <a class="navbar-brand" href="index.php">Ctrl Alt Delete</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -60,12 +60,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="account.html"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="account.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -78,17 +78,17 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="myProject.html"><i class="fa fa-folder-open fa-fw"></i> My Projects</a>
+                            <a href="myProject.php"><i class="fa fa-folder-open fa-fw"></i> My Projects</a>
                         </li>
                         <!-- ONLY FOR PEOPLE WHO ARE PROJECT MANAGERS --> 
                         <li>
-                            <a href="createTask.html"><i class="fa fa-tasks fa-fw"></i> Create a New Task</a>
+                            <a href="createTask.php"><i class="fa fa-tasks fa-fw"></i> Create a New Task</a>
                         </li>
                         <li>
-                            <a href="currentTask.html"><i class="fa fa-bars fa-fw"></i> Current Tasks</a>
+                            <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> Current Tasks</a>
                         </li>
                     </ul>
                 </div>
@@ -96,59 +96,26 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-        <br/>
-        <br/>
+
         <div id="page-wrapper">
             <div class="row">
+                <!-- GOTTA BE DYNAMIC -->
                 <div class="col-lg-12">
-                    <h1 class="page-header">Create a New Task</h1>
+                    <strong><h3>Account Information:</h3></strong>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <!-- ALL OF THESE NEEDS IDs -->
-                    <form>
-                        <label class="bigLabel">Project</label>
-                            <select name="Projects">
-                                <option value ="Project 1">Project 1</option>
-                                <option value ="Project 2">Project 2</option>
-                                <option value ="Project 3">Project 3</option>
-                            </select>
-                        <br/>
-                        <label class="bigLabel">Due Date</label>
-                            <input type="Date">
-                        <br/>
-                        <label class="bigLabel">Priority</label>
-                            <select name="Priority">
-                                <option value ="Low">Low</option>
-                                <option value ="Medium">Medium</option>
-                                <option value ="High">High</option>
-                            </select>
-                        <br/>
-                        <label class="bigLabel">Title</label>
-                            <input class="text long-field" type="text">
-                        <br/>
-                        <label class="bigLabel">Assignee</label>
-                            <input class="text long-field" type="text">
-                            <!-- we're going to need a suggestions field once they start typing a name to get a list of names  -->
-                        <br/>
-                        <label class="bigLabel">Task Description</label>
-                            <textarea class="form-control"></textarea>
-                        <br/>
-                        <label class="bigLabel">Attachments</label>
-                            <input type="file" accept="image/*|file_extension">
-                    </form>
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-sm-offset-10 col-sm-2">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </div>
+                <div class="container">
+                    <label class="bigLabel">Full Name:</label>
+                    <p class="bigFont">Anthony Tieu</p>
+                    <br/>
+                    <label class="bigLabel">Email:</label>
+                    <p class="bigFont">test@test.com</p>
+                    <br/>
+                    <label class="bigLabel">Password:</label>
+                    <p class="bigFont">*******</p>
+                    <a href-"#">Click here to Update Account Information</a>
                 </div>
             </div>
+
         </div>
         <!-- /#page-wrapper -->
 
