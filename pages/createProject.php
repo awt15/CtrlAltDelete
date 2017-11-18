@@ -45,32 +45,31 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <!-- ALL OF THESE NEEDS IDs -->
-                <form style="font-size:120%;">
+                <form style="font-size:120%;" action="projectcreation.php" method="post">
                     <div class="form-group">
                         <label for="projectName">Project Name:</label>
-                        <input type="text" id="projectName" class="form-control">
+                        <input type="text" id="projectName" name="projectName" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="details">Details: </label>
-                        <input type="text" id="details" class="form-control">
+                        <input type="text" id="details" name="details" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="projectKey">Project Key:</label>
-                        <input type="text" id="projectKey" class="form-control">
+                        <input type="text" id="projectKey" name="projectKey" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="confirmProjectKey">Confirm Project Key:</label>
-                        <input type="text" id="confirmProjectKey" class="form-control">
+                        <input type="text" id="confirmProjectKey" name="confirmProjectKey" class="form-control">
                     </div>
-
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-offset-10 col-sm-2">
+                                <button class="btn btn-lg btn-success btn-block" type = "submit" name="create">Create</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-sm-offset-10 col-sm-2">
-                        <a href="index.php" class="btn btn-lg btn-primary btn-block">Create</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
