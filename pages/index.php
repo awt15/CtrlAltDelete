@@ -69,7 +69,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -105,7 +105,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Welcome <?php echo $_SESSION['first']; ?></h1>
+                    <h1 class="page-header">Welcome, <?php echo $_SESSION['first']; ?></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

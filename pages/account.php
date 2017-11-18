@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -105,13 +109,13 @@
                 </div>
                 <div class="container">
                     <label class="bigLabel">Full Name:</label>
-                    <p class="bigFont">Anthony Tieu</p>
+                    <p class="bigFont"><?php echo $_SESSION['first'] . " " . $_SESSION['last'];?></p>
                     <br/>
                     <label class="bigLabel">Email:</label>
-                    <p class="bigFont">test@test.com</p>
+                    <p class="bigFont"><?php echo $_SESSION['email'];?></p>
                     <br/>
-                    <label class="bigLabel">Password:</label>
-                    <p class="bigFont">*******</p>
+                    <label class="bigLabel">Username:</label>
+                    <p class="bigFont"><?php echo $_SESSION['username'];?></p>
                     <a href-"#">Click here to Update Account Information</a>
                 </div>
             </div>
