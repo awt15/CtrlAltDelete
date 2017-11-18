@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<?php
+   ob_start();
+   session_start();
+?>
+
 <html lang="en">
 
 <head>
@@ -43,7 +49,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form action = "logintest.php" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
@@ -57,10 +63,10 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.php" class="btn btn-lg btn-success btn-block">Login</a>
+                                <button class="btn btn-lg btn-success btn-block" type = "submit" name = "login">Login</button>
                                 <a href="createaccount.php" class="btn btn-lg btn-primary btn-block">Create Account</a>
                             </fieldset>
-			</form>
+                    </form>
                     </div>
                 </div>
             </div>

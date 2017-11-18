@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 05:29 AM
+-- Generation Time: Nov 17, 2017 at 11:53 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -87,18 +87,18 @@ CREATE TABLE `users` (
   `first` varchar(45) CHARACTER SET utf8 NOT NULL,
   `last` varchar(45) CHARACTER SET utf8 NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(12) NOT NULL
+  `passhash` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `first`, `last`, `email`, `password`) VALUES
-('atieu', 'Anthony', 'Tieu', 'atieu@test.com', 'test'),
-('kle', 'Khoa', 'Le', 'kle@test.com', 'test'),
-('mwalker', 'Mark', 'Walker', 'mwalker@test.com', 'test'),
-('vtran', 'Vita', 'Tran', 'vtran@test.com', 'test');
+INSERT INTO `users` (`username`, `first`, `last`, `email`, `passhash`) VALUES
+('atieu', 'Anthony', 'Tieu', 'atieu@test.com', '098f6bcd4621d373cade4e832627b4f6'),
+('kle', 'Khoa', 'Le', 'kle@test.com', '098f6bcd4621d373cade4e832627b4f6'),
+('mwalker', 'Mark', 'Walker', 'mtw14@my.fsu.edu', '5a105e8b9d40e1329780d62ea2265d8a'),
+('vtran', 'Vita', 'Tran', 'vtran@test.com', '098f6bcd4621d373cade4e832627b4f6');
 
 --
 -- Indexes for dumped tables

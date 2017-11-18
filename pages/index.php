@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+   session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -101,7 +105,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Welcome Anthony</h1>
+                    <h1 class="page-header">Welcome <?php echo $_SESSION['first']; ?></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
