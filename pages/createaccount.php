@@ -45,39 +45,39 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <!-- ALL OF THESE NEEDS IDs -->
-                <form style="font-size:120%;">
+                <form action = "accountcreation.php" method = "post" style="font-size:120%;">
                     <div class="form-group">
                         <label for="firstname">First name:</label>
-                        <input type="text" id="firstName" class="form-control">
+                        <input type="text" id="firstName" name="firstName" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last name:</label>
-                        <input type="text" id="lastName" class="form-control">
+                        <input type="text" id="lastName" name="lastName" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="emailaddress">Email Address:</label>
-                        <input type="text" id="emailAddress" class="form-control">
+                        <input type="email" id="emailAddress" name="email" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <input type="text" id="username" class="form-control">
+                        <input type="text" id="username" name="username" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="text" id="password" class="form-control">
+                        <input type="password" id="password" name="password1" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="confirmpassword">Confirm Password:</label>
-                        <input type="text" id="confirmPassword" class="form-control">
+                        <input type="password" id="confirmPassword" name="password2" class="form-control">
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-offset-10 col-sm-2">
+                                <button class="btn btn-lg btn-success btn-block" type = "submit" name = "create_acc">Create Account</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-sm-offset-10 col-sm-2">
-                        <a href="index.php" class="btn btn-lg btn-primary btn-block">Sign up</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
