@@ -113,7 +113,7 @@
                     <form style="font-size:120%;">
                         <div class="form-group">
                             <label for="firstname">First name:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['first'];?></p>
+                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="<?php echo $_SESSION['first'];?>">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name:</label>
@@ -129,8 +129,11 @@
                         </div>
                         <div class="panel-footer">
                             <div class="row">
-                                <div class="col-sm-offset-10 col-sm-2">
-                                    <a class="btn btn-lg btn-primary btn-block" href="updateAccount.php">Edit Account</a>
+                                <div class="col-sm-offset-8 col-sm-2">
+                                    <button class="btn btn-lg btn-success btn-block">Update Account</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-lg btn-default btn-block" href="account.php">Cancel</a>
                                 </div>
                             </div>
                         </div>

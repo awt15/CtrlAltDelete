@@ -112,6 +112,7 @@
                                 <th>Tasks</th>
                                 <th>Priority</th>
                                 <th>Assigned To</th>
+                                <!--<th>Status</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -125,6 +126,9 @@
                                 <td>
                                     <a href="account.php">Anthony Tieu</a>
                                 </td>
+                                <!--<td>
+                                    Finished
+                                </td> -->
                             </tr>
                             <tr>
                                 <td>
@@ -136,6 +140,9 @@
                                 <td>
                                     <a href="account.php">Vita Tran</a>
                                 </td>
+                                <!--<td>
+                                    Not Started
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
