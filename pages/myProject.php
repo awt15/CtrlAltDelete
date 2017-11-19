@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -113,29 +117,56 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Chinese American Student Organization</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Anthony Tieu</a>
-                        </td>
-                        <td>
-                            08/19/1997
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Vietnamese Student Association</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Vita Tran</a>
-                        </td>
-                        <td>
-                            01/14/1997
-                        </td>
-                    </tr>
-
+                <?php
+                    $user = $_SESSION['username'];
+                    $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                    $results = mysqli_query($connection, "SELECT projectID FROM belongto WHERE username='$user'");
+                    if (mysqli_num_rows($results) != 0)
+                    {
+                        while($row= mysqli_fetch_row($results))
+                        {
+                            $pid = $row[0];
+                            $findUser = mysqli_query($connection, "SELECT username FROM belongto WHERE projectID=$pid AND permissions=1");
+                            $leaderRow = mysqli_fetch_row($findUser);
+                            $leaderUser = $leaderRow[0];
+                            $findLeaderName= mysqli_query($connection, "SELECT first, last FROM users WHERE username='$leaderUser'");
+                            $leaderRow = mysqli_fetch_row($findLeaderName);
+                            $leaderFirst = $leaderRow[0];
+                            $leaderLast = $leaderRow[1];
+                            
+                            $findProjectInfo = mysqli_query($connection, "SELECT projectName, projectStart FROM projects WHERE projectID = '$pid'");
+                            $projectRow = mysqli_fetch_row($findProjectInfo);
+                            $pname = $projectRow[0];
+                            $pdate = $projectRow[1];
+                            
+                            echo "<tr>";
+                            echo "<td>";
+                            echo "<a href='viewProject.php'>$pname</a>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<a href='account.php'>$leaderFirst  $leaderLast</a>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo "$pdate";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<tr>";
+                        echo "<td>";
+                        echo "No Projects";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "N/A";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "N/A";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                 ?>
                 </tbody>
             </table>
             <div class="row">
