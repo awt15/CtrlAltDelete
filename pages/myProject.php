@@ -141,7 +141,7 @@
                             
                             echo "<tr>";
                             echo "<td>";
-                            echo "<a href='viewProject.php'>$pname</a>";
+                            echo "<a href='viewProject.php?var=$pname'>$pname</a>";
                             echo "</td>";
                             echo "<td>";
                             echo "<a href='account.php'>$leaderFirst  $leaderLast</a>";

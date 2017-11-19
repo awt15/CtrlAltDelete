@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -101,7 +105,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Project Name *</h1>
+                    <h1 class="page-header"><?php echo $_GET['var']; ?></h1>
                 </div>
             </div>
             <div class="row">
