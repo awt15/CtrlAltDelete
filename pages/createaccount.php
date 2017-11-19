@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+   session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -38,6 +42,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Create an Account</h1>
+                <?php 
+                    if($_SESSION['takenErr'])
+                    {
+                        echo "Username taken";
+                    }
+                ?>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -48,27 +58,28 @@
                 <form action = "accountcreation.php" method = "post" style="font-size:120%;">
                     <div class="form-group">
                         <label for="firstname">First name:</label>
-                        <input type="text" id="firstName" name="firstName" class="form-control">
+                        <input type="text" id="firstName" name="firstName" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last name:</label>
-                        <input type="text" id="lastName" name="lastName" class="form-control">
+                        <input type="text" id="lastName" name="lastName" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="emailaddress">Email Address:</label>
-                        <input type="email" id="emailAddress" name="email" class="form-control">
+                        <input type="email" id="emailAddress" name="email" class="form-control" required="required" oninvalid="this.setCustomValidity('Please enter a valid email address.' )" oninput="setCustomValidity('')"/>
                     </div>
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" class="form-control">
+                        <input type="text" id="username" name="username" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">     
+                        
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" name="password1" class="form-control">
+                        <input type="password" id="password" name="password1" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="confirmpassword">Confirm Password:</label>
-                        <input type="password" id="confirmPassword" name="password2" class="form-control">
+                        <input type="password" id="confirmPassword" name="password2" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
                     </div>
                     <div class="panel-footer">
                         <div class="row">
