@@ -63,7 +63,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-primary btn-block" type = "submit" name = "login">Login</button>
+                                <button class="btn btn-lg btn-success btn-block" type = "submit" name = "login">Login</button>
                                 <a href="createaccount.php" class="btn btn-lg btn-primary btn-block">Create Account</a>
                             </fieldset>
                     </form>

@@ -101,51 +101,53 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Projects</h1>
+                    <h1 class="page-header">Project Name *</h1>
                 </div>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Project</th>
-                        <th>Project Lead</th>
-                        <th>Date Started</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Chinese American Student Organization</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Anthony Tieu</a>
-                        </td>
-                        <td>
-                            08/19/1997
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Vietnamese Student Association</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Vita Tran</a>
-                        </td>
-                        <td>
-                            01/14/1997
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="joinProject.php" type="submit" class="btn btn-info btn-block">Join A Project</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="createProject.php" type="submit" class="btn btn-primary btn-block">Create A Project</a>
+                <div class="col-sm-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tasks</th>
+                                <th>Priority</th>
+                                <th>Assigned To</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#">TEST- 001</a>
+                                </td>
+                                <td>
+                                    <i class="fa fa-angle-double-up fa-fw"></i>
+                                </td>
+                                <td>
+                                    <a href="#">Anthony Tieu</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">TEST- 002</a>
+                                </td>
+                                <td>
+                                    <i class="fa fa-arrow-up fa-fw"></i>
+                                </td>
+                                <td>
+                                    <a href="#">Vita Tran</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-offset-10 col-sm-2">
+                    <a href="viewProjectDetails.php" type="submit" class="btn btn-primary btn-block">View/Edit Project</a>
+                </div>
+
+            </div>
+
     </div>
     <!-- /#wrapper -->
 

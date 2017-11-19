@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -101,51 +105,41 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Projects</h1>
+                    <h1 class="page-header">Project Name *</h1>
                 </div>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Project</th>
-                        <th>Project Lead</th>
-                        <th>Date Started</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Chinese American Student Organization</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Anthony Tieu</a>
-                        </td>
-                        <td>
-                            08/19/1997
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="viewProject.php">Vietnamese Student Association</a>
-                        </td>
-                        <td>
-                            <a href="account.php">Vita Tran</a>
-                        </td>
-                        <td>
-                            01/14/1997
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+            <form style="font-size:120%;">
+                <div class="form-group">
+                    <label for="projectName">Project Name:</label>
+                    <a href="#">Project Name *</a>
+                </div>
+                <div class="form-group">
+                    <label for="projectID">Project ID: </label>
+                    1
+                </div>
+                <div class="form-group">
+                    <label for="abbreviation">Project Abbreviation:</label>
+                    <a href="#">TEST</a>
+                </div>
+                <div class="form-group">
+                    <label for="projectKey">Project Key:</label>
+                    <a href="#">*****</a>
+                </div>
+            </form>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="joinProject.php" type="submit" class="btn btn-info btn-block">Join A Project</a>
+                <div class="col-sm-offset-6 col-sm-2">
+                    <a class="btn btn-lg btn-danger btn-block" type = "submit">Delete Project</a>
                 </div>
                 <div class="col-sm-2">
-                    <a href="createProject.php" type="submit" class="btn btn-primary btn-block">Create A Project</a>
+                    <a class="btn btn-lg btn-primary btn-block" type = "submit" href="viewProject.php">Save</a>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-lg btn-default btn-block" type = "submit" href="viewProject.php">Cancel</a>
                 </div>
             </div>
+        </div>
+        <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
 
