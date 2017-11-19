@@ -101,56 +101,43 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Project Name *</h1>
+                    <h1 class="page-header">Task ID - Task Title*</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-4">
+                   <label for="priority">Priority:</label>
+                   <div><i class="fa fa-angle-double-up fa-fw"></i></div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="dueDate">Due Date:</label>
+                    <div>08/19/1997</div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="assignee">Assignee:</label>
+                    <div>Anthony Tieu</div>
+                </div>
+            </div>
+            </br>
             <div class="row">
                 <div class="col-sm-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Tasks</th>
-                                <th>Priority</th>
-                                <th>Assigned To</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="viewTask.php">TEST- 001</a>
-                                </td>
-                                <td>
-                                    <i class="fa fa-angle-double-up fa-fw"></i>
-                                </td>
-                                <td>
-                                    <a href="account.php">Anthony Tieu</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="viewTask.php">TEST- 002</a>
-                                </td>
-                                <td>
-                                    <i class="fa fa-arrow-up fa-fw"></i>
-                                </td>
-                                <td>
-                                    <a href="account.php">Vita Tran</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <label for="description">Task Description:</label>
+                    <div>Test test here is test.</div>
                 </div>
             </div>
+            </br>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="createTask.php" class="btn btn-primary btn-block">Create a Task</a>
+                <div class="col-sm-offset-6 col-sm-2">
+                    <button class="btn btn-primary btn-block">Comment</button>
                 </div>
                 <div class="col-sm-2">
-                    <a href="viewProjectDetails.php" class="btn btn-primary btn-block">View/Edit Project Details</a>
+                    <button class="btn btn-info btn-block">Start Task</button>
                 </div>
-           </div>
-
-    </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-block">Finish Task</button>
+                </div>
+            </div>
+        </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->

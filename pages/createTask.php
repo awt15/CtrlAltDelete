@@ -119,7 +119,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="dueDate">Due Date:  <label>
+                            <label for="dueDate">Due Date:</label>
                             <input type="Date" id="dueDate" class="form-control">
                         </div>
                         <div class="form-group">
