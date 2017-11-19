@@ -1,6 +1,7 @@
 <?php
     session_start();
-    if(isset($_POST['projectName']) && isset($_POST['details']) && isset($_POST['projectKey']) && isset($_POST['confirmProjectKey']))
+    $blank = "";
+    if($_POST['projectName'] != "" && $_POST['details']!="" && $_POST['projectKey'] != "" && $_POST['confirmProjectKey'] != "")
     {
         $name = $_POST['projectName'];
         $details = $_POST['details'];
