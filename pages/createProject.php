@@ -65,7 +65,7 @@
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-offset-10 col-sm-2">
-                                <button class="btn btn-lg btn-success btn-block" type = "submit" name="create">Create</button>
+                                <button class="btn btn-lg btn-primary btn-block" type = "submit" name="create">Create</button>
                             </div>
                         </div>
                     </div>

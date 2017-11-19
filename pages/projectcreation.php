@@ -28,7 +28,7 @@
                     $rows = mysqli_fetch_row($getID);
                     $ID = $rows[0];
                     $user = $_SESSION['username'];
-                    $result = mysqli_query($connection, "INSERT INTO belongTo (username, projectID, permissions) VALUES ('$user', '$ID', 1)");
+                    $result = mysqli_query($connection, "INSERT INTO belongto (username, projectID, permissions) VALUES ('$user', $ID, 1)");
                     mysqli_close($connection);
                     header("Location: myProject.php");
                 }
