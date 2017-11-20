@@ -10,8 +10,6 @@
         $assignee = $_POST['assignee'];
         $taskDescript = $_POST['taskDescript'];
         $user = $_SESSION['username'];
-        $abr = strtoupper(substr($title, 0, 3));
-        
         $connection = mysqli_connect("localhost", "root", "", "cen4020");
             
         if ($connection == false)
@@ -19,9 +17,13 @@
             echo "Connection Failed!";
             die();
         }
-            
+         
         else
         {
+            $findName = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID='$project'");
+            $namerow = mysqli_fetch_row($findName);
+            $pname = $namerow[0];
+            $abr = strtoupper(substr($pname, 0, 3));
             $result = mysqli_query($connection, "SELECT permissions FROM belongto WHERE username='$user' AND projectID='$project'");
             
             if(mysqli_num_rows($result) != 0)
