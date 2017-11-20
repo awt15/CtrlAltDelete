@@ -114,40 +114,85 @@
                         <thead>
                             <tr>
                                 <th>Tasks</th>
-                                <th>Priority</th>
                                 <th>Assigned To</th>
-                                <!--<th>Status</th> -->
+                                <th>Priority</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <a href="viewTask.php">TEST- 001</a>
-                                </td>
-                                <td>
-                                    <i class="fa fa-angle-double-up fa-fw"></i>
-                                </td>
-                                <td>
-                                    <a href="account.php">Anthony Tieu</a>
-                                </td>
-                                <!--<td>
-                                    Finished
-                                </td> -->
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="viewTask.php">TEST- 002</a>
-                                </td>
-                                <td>
-                                    <i class="fa fa-arrow-up fa-fw"></i>
-                                </td>
-                                <td>
-                                    <a href="account.php">Vita Tran</a>
-                                </td>
-                                <!--<td>
-                                    Not Started
-                                </td> -->
-                            </tr>
+                            <?php
+                                $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                $pname = $_GET['var'];
+                                $projectList = mysqli_query($connection, "SELECT projectID FROM projects WHERE projectName = '$pname'");
+                                $projectL = mysqli_fetch_row($projectList);
+                                $project = $projectL[0];
+                                $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation FROM tasks WHERE projectID='$project'");
+                                if(mysqli_num_rows($results) != 0)
+                                {
+                                    while($row = mysqli_fetch_row($results))
+                                    {
+                                        $tid = $row[0];
+                                        $priority = $row[1];
+                                        $uname = $row[2];
+                                        $status = $row[3];
+                                        $abb = $row[4];
+
+                                        $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
+                                        $asname = mysqli_fetch_row($asnameL);
+                                        $fname = $asname[0];
+                                        $lname = $asname[1];
+
+                                        echo "<tr>";
+                                        echo "<td>";
+                                        echo "<a href='viewTask.php?var=$tid'>$abb-$tid</a>";
+                                        echo "</td>";
+
+                                        echo "<td>";
+                                        echo "<a href='account.php'>$fname $lname</a>";
+                                        echo "</td>";
+
+                                        echo "<td>";
+                                        
+                                        if($priority == 1)
+                                        {
+                                            echo "<i class='fa fa-angle-up fa-fw'></i>";
+                                        }
+                                        elseif ($priority == 2)
+                                        {
+                                            echo "<i class='fa fa-angle-double-up fa-fw'></i>";
+                                        }
+                                        else
+                                        {
+                                            echo "<i class='fa fa-arrow-up fa-fw'></i>";
+                                        }
+
+                                        echo "</td>";
+                                        echo "<td>";
+                                        if($status == 1)
+                                        {
+                                            echo "Not Started";
+                                        }
+                                        elseif($status == 2)
+                                        {
+                                            echo "In progress";
+                                        }
+                                        else
+                                        {
+                                            echo "Completed";
+                                        }
+                                        echo "</td>";
+                                        echo "</tr>";
+
+                                    }
+                                }
+                                else
+                                {
+                                    echo "<tr><td>No Tasks</td>";
+                                    echo "<td>N/A</td>";
+                                    echo "<td>N/A</td>";
+                                    echo "<td>N/A</td></tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
