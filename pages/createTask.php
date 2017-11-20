@@ -109,45 +109,41 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!-- ALL OF THESE NEEDS IDs -->
-                    <form style="font-side: 120%">
+                    <form style="font-side: 120%" action="taskcreation.php" method="post">
                         <div class="form-group">
-                            <label for="project">Project:</label>
-                            <select id="project" class="form-control">
-                                <option value ="Project 1">Project 1</option>
-                                <option value ="Project 2">Project 2</option>
-                                <option value ="Project 3">Project 3</option>
-                            </select>
+                            <label for="projectID">Project ID:</label>
+                            <input type="text" id="projectID" name="projectID" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="dueDate">Due Date:</label>
-                            <input type="Date" id="dueDate" class="form-control">
+                            <input type="text" id="dueDate" name="dueDate" class="form-control" placeholder="yyyy-mm-dd">
                         </div>
                         <div class="form-group">
                             <label for="priority">Priority:</label>
-                            <select id="priority" class="form-control">
-                                <option value ="Low">Low</option>
-                                <option value ="Medium">Medium</option>
-                                <option value ="High">High</option>
+                            <select id="priority" name="priority" class="form-control">
+                                <option value ="1">Low</option>
+                                <option value ="2">Medium</option>
+                                <option value ="3">High</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="title">Title:</label>
-                            <input type="text" id="title" class="form-control">
+                            <input type="text" id="title" name="title" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="assignee">Assignee:</label>
-                            <input type="text" id="assignee" class="form-control">
+                            <input type="text" id="assignee" name="assignee" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="task">Task Description: </label>
-                            <input type="text long-field" id="task" class="form-control">
+                            <input type="text long-field" id="task" name="taskDescript" class="form-control">
                         </div>
                     </form>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-sm-offset-10 col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block">Create Task</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="create">Create Task</button>
                         </div>
                     </div>
                 </div>
