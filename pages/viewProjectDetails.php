@@ -105,26 +105,40 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Project Name *</h1>
-                </div>
-            </div>
-            <form style="font-size:120%;">
-                <div class="form-group">
-                    <label for="projectName">Project Name:</label>
-                    <a href="#">Project Name *</a>
-                </div>
-                <div class="form-group">
-                    <label for="projectID">Project ID: </label>
-                    1
-                </div>
-                <div class="form-group">
-                    <label for="abbreviation">Project Abbreviation:</label>
-                    <a href="#">TEST</a>
-                </div>
-                <div class="form-group">
-                    <label for="projectKey">Project Key:</label>
-                    <a href="#">*****</a>
-                </div>
+        <?php
+                    $pname = $_GET['title'];
+                    echo "<h1 class='page-header'>$pname</h1>";
+                echo "</div>";
+            echo "</div>";
+            echo "<form style='font-size:120%;'>";
+                $abb = strtoupper(substr($pname, 0, 3));
+                $user = $_SESSION['username'];
+                $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                
+                $results = mysqli_query($connection, "SELECT projectID FROM projects WHERE projectName='$pname'");
+                while($rows = mysqli_fetch_row($results))
+                {
+                    $testpid = $rows[0];
+                    $userinproj = mysqli_query($connection, "SELECT permissions FROM belongto WHERE username='$user' AND projectID=$testpid");
+                    if(mysqli_num_rows($userinproj) != 0)
+                    {
+                        $pid = $testpid;
+                    }
+                }
+                
+                echo "<div class='form-group'>";
+                echo "<label for='projectName'>Project Name:</label>";
+                echo "<a href='viewProject.php?var=$pname'>$pname</a>";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                    echo "<label for='projectID'>Project ID: </label>";
+                    echo "$pid";
+                echo "</div>";
+                echo "<div class='form-group'>";
+                    echo "<label for='abbreviation'>Project Abbreviation:</label>";
+                    echo "$abb";
+                echo "</div>";
+                ?>
             </form>
             <div class="row">
                 <div class="col-sm-offset-6 col-sm-2">
@@ -134,7 +148,7 @@
                     <a class="btn btn-lg btn-primary btn-block" type = "submit" href="viewProject.php">Save</a>
                 </div>
                 <div class="col-sm-2">
-                    <a class="btn btn-lg btn-default btn-block" type = "submit" href="viewProject.php">Cancel</a>
+                    <a class="btn btn-lg btn-default btn-block" type = "submit" href="<?php echo "viewProject.php?var=$pname"; ?>">Cancel</a>
                 </div>
             </div>
         </div>

@@ -105,7 +105,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><?php echo $_GET['var']; ?></h1>
+                    <h1 class="page-header"><?php echo $_GET['var'];
+                    $title =$_GET['var'];?></h1>
                 </div>
             </div>
             <div class="row">
@@ -202,7 +203,9 @@
                     <a href="createTask.php" class="btn btn-primary btn-block">Create a Task</a>
                 </div>
                 <div class="col-sm-2">
-                    <a href="viewProjectDetails.php" class="btn btn-primary btn-block">View/Edit Project Details</a>
+                <?php
+                    echo "<a href='viewProjectDetails.php?title=$title' class='btn btn-primary btn-block'>View/Edit Project Details</a>";
+                ?>
                 </div>
            </div>
 
