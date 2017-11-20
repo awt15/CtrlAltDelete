@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -101,28 +105,69 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Project/TaskID: Task Title*</h1>
+                    <?php
+                    $tid = $_GET['var'];
+                    $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                    $namelist = mysqli_query($connection, "SELECT title, projectID, abbreviation, priority, dueDate, username, taskDescription FROM tasks WHERE taskID = '$tid'");
+                    $nameL = mysqli_fetch_row($namelist);
+                    $title = $nameL[0];
+                    $pid = $nameL[1];
+                    $abb = $nameL[2];
+                    $priority = $nameL[3];
+                    $due = $nameL[4];
+                    $uname = $nameL[5];
+
+                    $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
+                    $asname = mysqli_fetch_row($asnameL);
+                    $fname = $asname[0];
+                    $lname = $asname[1];
+
+                    $descript = $nameL[6];
+                    $projectlist = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID = '$pid'");
+                    $projectL = mysqli_fetch_row($projectlist);
+                    $project = $projectL[0];
+
+                    echo "<h1 class='page-header'>";
+                    echo "<a href='#'>$project</a>/";
+                    echo "$abb-$tid: $title</h1>";
+
+                    ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                   <label for="priority">Priority:</label>
-                   <div><i class="fa fa-angle-double-up fa-fw"></i></div>
+                    <label for="priority">Priority:</label>
+                    <?php
+                    echo "<div>";
+                    if($priority == 1)
+                    {
+                        echo "<i class='fa fa-angle-up fa-fw'></i>";
+                    }
+                    elseif ($priority == 2)
+                    {
+                        echo "<i class='fa fa-angle-double-up fa-fw'></i>";
+                    }
+                    else
+                    {
+                        echo "<i class='fa fa-arrow-up fa-fw'></i>";
+                    }
+                    echo "</div>";
+                    ?>
                 </div>
                 <div class="col-sm-4">
                     <label for="dueDate">Due Date:</label>
-                    <div>08/19/1997</div>
+                    <div><?php echo "$due"?></div>
                 </div>
                 <div class="col-sm-4">
                     <label for="assignee">Assignee:</label>
-                    <div>Anthony Tieu</div>
+                    <div><?php echo "$fname $lname"?></div>
                 </div>
             </div>
             </br>
             <div class="row">
                 <div class="col-sm-12">
                     <label for="description">Task Description:</label>
-                    <div>Test test here is test.</div>
+                    <div><?php echo "$descript" ?></div>
                 </div>
             </div>
             </br>
@@ -131,10 +176,10 @@
                     <button class="btn btn-primary btn-block">Comment</button>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-info btn-block">Start Task</button>
+                    <a href="changeStatus.php?var=2" class="btn btn-info btn-block">Start Task</a>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-success btn-block">Finish Task</button>
+                    <a href="changeStatus.php?var=3" class="btn btn-success btn-block">Finish Task</a>
                 </div>
             </div>
         </div>
