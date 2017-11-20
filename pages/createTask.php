@@ -118,14 +118,16 @@
                             <label for="dueDate">Due Date:</label>
                             <input type="text" id="dueDate" name="dueDate" class="form-control" placeholder="yyyy-mm-dd">
                         </div>
-                        <div class="form-group">
-                            <label for="priority">Priority:</label>
-                            <select id="priority" name="priority" class="form-control">
-                                <option value ="1">Low</option>
-                                <option value ="2">Medium</option>
-                                <option value ="3">High</option>
-                            </select>
-                        </div>
+                        <?php
+                        echo "<div class='form-group'>";
+                            echo "<label for='priority'>Priority:</label>";
+                            echo "<select id='priority' name='priority' class='form-control'>";
+                                echo "<option value ='1'>Low</option>";
+                                echo "<option value ='2'>Medium</option>";
+                                echo "<option value ='3'>High</option>";
+                            echo "</select>";
+                        echo "</div>";
+                        ?>
                         <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" class="form-control">
@@ -138,16 +140,14 @@
                             <label for="task">Task Description: </label>
                             <input type="text long-field" id="task" name="taskDescript" class="form-control">
                         </div>
-                    </form>
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-sm-offset-10 col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block" name="create">Create Task</button>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-offset-10 col-sm-2">
+                                    <button type="submit" class="btn btn-primary btn-block" name="create">Create Task</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </form>
         </div>
         <!-- /#page-wrapper -->
 
