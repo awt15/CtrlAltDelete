@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2017 at 12:50 AM
+-- Generation Time: Nov 20, 2017 at 01:44 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -34,6 +34,17 @@ CREATE TABLE `belongto` (
   `permissions` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `belongto`
+--
+
+INSERT INTO `belongto` (`username`, `projectID`, `permissions`) VALUES
+('kle', 1, 0),
+('kle', 2, 1),
+('kle', 3, 1),
+('mwalker', 1, 1),
+('vtran', 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +73,15 @@ CREATE TABLE `projects` (
   `projectKey` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`projectID`, `projectName`, `projectStart`, `projectDescription`, `projectKey`) VALUES
+(1, 'Test Project', '2017-11-19', 'Please  Work', '098f6bcd4621d373cade4e832627b4f6'),
+(2, 'Khoas Trip', '2017-11-19', 'YOlo', '098f6bcd4621d373cade4e832627b4f6'),
+(3, 'It works', '2017-11-19', 'haha', '098f6bcd4621d373cade4e832627b4f6');
+
 -- --------------------------------------------------------
 
 --
@@ -74,7 +94,10 @@ CREATE TABLE `tasks` (
   `username` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `projectID` int(11) NOT NULL,
   `taskDescription` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `priority` int(11) NOT NULL
+  `priority` int(11) NOT NULL,
+  `status` int(1) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `abbreviation` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -160,7 +183,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tasks`
