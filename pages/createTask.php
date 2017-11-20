@@ -109,7 +109,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!-- ALL OF THESE NEEDS IDs -->
-                    <form style="font-side: 120%" action="taskcreation.php" method="post">
+                    <form style="font-side: 120%" action="taskCreation.php" method="post">
                         <div class="form-group">
                             <label for="projectID">Project ID:</label>
                             <input type="text" id="projectID" name="projectID" class="form-control">
@@ -133,7 +133,7 @@
                             <input type="text" id="title" name="title" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="assignee">Assignee:</label>
+                            <label for="assignee">Assignee Username:</label>
                             <input type="text" id="assignee" name="assignee" class="form-control">
                         </div>
                         <div class="form-group">

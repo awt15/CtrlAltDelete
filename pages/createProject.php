@@ -55,11 +55,11 @@
                         <input type="text" id="details" name="details" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="projectKey">Project Key:</label>
+                        <label for="projectKey">Create Project Password:</label>
                         <input type="text" id="projectKey" name="projectKey" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="confirmProjectKey">Confirm Project Key:</label>
+                        <label for="confirmProjectKey">Confirm Password:</label>
                         <input type="text" id="confirmProjectKey" name="confirmProjectKey" class="form-control">
                     </div>
                     <div class="panel-footer">
