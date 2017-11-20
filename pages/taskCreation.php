@@ -24,21 +24,25 @@
             $namerow = mysqli_fetch_row($findName);
             $pname = $namerow[0];
             $abr = strtoupper(substr($pname, 0, 3));
-            $result = mysqli_query($connection, "SELECT permissions FROM belongto WHERE username='$user' AND projectID='$project'");
+            $checkAdmin = mysqli_query($connection, "SELECT permissions FROM belongto WHERE username='$user' AND projectID='$project'");
             
-            if(mysqli_num_rows($result) != 0)
+            if(mysqli_num_rows($checkAdmin) != 0)
             {
-                $row = mysqli_fetch_row($result);
+                $row = mysqli_fetch_row($checkAdmin);
                 if ($row[0] == 1)
                 {
-                    $insert = mysqli_query($connection, "INSERT INTO tasks (dueDate, username, projectID, taskDescription, priority, status, title, abbreviation) VALUES ('$duedate', '$user', $project, '$taskDescript', '$priority', 1, '$title', '$abr')");
-                    if ($insert)
+                    $checkAss = mysqli_query($connection, "SELECT permissions FROM belongto WHERE username='$assignee' AND projectID='$project'");
+                    if(mysqli_num_rows($checkAss) != 0)
                     {
-                        $getname = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID=$project");
-                        $res = mysqli_fetch_row($getname);
-                        $pname = $res[0];
-                        header("Location: viewProject.php?var=".urlencode($pname));
-                        exit;
+                        $insert = mysqli_query($connection, "INSERT INTO tasks (dueDate, username, projectID, taskDescription, priority, status, title, abbreviation) VALUES ('$duedate', '$assignee', $project, '$taskDescript', '$priority', 1, '$title', '$abr')");
+                        if ($insert)
+                        {
+                            $getname = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID=$project");
+                            $res = mysqli_fetch_row($getname);
+                            $pname = $res[0];
+                            header("Location: viewProject.php?var=".urlencode($pname));
+                            exit;
+                        }
                     }
                 }     
             }
