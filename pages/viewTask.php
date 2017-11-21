@@ -127,6 +127,10 @@
                     $projectL = mysqli_fetch_row($projectlist);
                     $project = $projectL[0];
 
+                    $taskstatus = mysqli_query($connection, "SELECT status FROM tasks WHERE taskID = '$tid'");
+                    $taskrow = mysqli_fetch_row($taskstatus);
+                    $status = $taskrow[0];
+
                     echo "<h1 class='page-header'>";
                     echo "<a href='#'>$project</a>/";
                     echo "$abb-$tid: $title</h1>";
@@ -172,14 +176,22 @@
             </div>
             </br>
             <div class="row">
-                <div class="col-sm-offset-6 col-sm-2">
+                <div class="col-sm-offset-7 col-sm-2">
                     <button class="btn btn-primary btn-block">Comment</button>
                 </div>
                 <div class="col-sm-2">
-                    <a href="changeStatus.php?var=2" class="btn btn-info btn-block">Start Task</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="changeStatus.php?var=3" class="btn btn-success btn-block">Finish Task</a>
+                    <?php 
+                        if ($status == 1){
+                            echo "<a href='changeStatus.php?stat=1&var=$tid' onclick=changeColor class='btn btn-success btn-block'>Start Task</a>";
+                        }
+                        else if ($status == 2){
+                            echo "<a href='changeStatus.php?stat=2&var=$tid' class='btn btn-danger btn-block'>Complete Task</a>";
+                        }
+                        else if ($status == 3){
+                            echo "<button class='btn btn-basic btn-block'>Completed</button>";
+                        }   
+                    ?>
+                    
                 </div>
             </div>
         </div>
