@@ -48,19 +48,20 @@
                 <form style="font-size:120%;" action="projectcreation.php" method="post">
                     <div class="form-group">
                         <label for="projectName">Project Name:</label>
-                        <input type="text" id="projectName" name="projectName" class="form-control">
+                        <input type="text" id="projectName" name="projectName" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="details">Details: </label>
-                        <input type="text" id="details" name="details" class="form-control">
+                        <input type="text" id="details" name="details" class="form-control required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')"">
                     </div>
                     <div class="form-group">
                         <label for="projectKey">Create Project Password:</label>
-                        <input type="text" id="projectKey" name="projectKey" class="form-control">
+                        <input type="password" id="projectKey" name="projectKey" class="form-control required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')"">
                     </div>
                     <div class="form-group">
                         <label for="confirmProjectKey">Confirm Password:</label>
-                        <input type="text" id="confirmProjectKey" name="confirmProjectKey" class="form-control">
+                        <input type="password" id="confirmProjectKey" name="confirmProjectKey" onkeyup="check(); return false;" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
+                        <span id="confirmMessage" class="confirmMessage"></span>
                     </div>
                     <div class="panel-footer">
                         <div class="row">
@@ -74,7 +75,25 @@
         </div>
     </div>
     <!-- /#container --> 
+    <script>
+    function check(){
+        var pass = document.getElementById('projectKey');
+        var confirmpass = document.getElementById('confirmProjectKey');
+        var message = document.getElementById('confirmMessage');
+        var green = "#66cc66";
+        var red = "#ff6666";
+        if(pass.value == confirmpass.value){
+            confirmpass.style.backgroundColor = green;
+            message.style.color = green;
+            message.innerHTML = "Passwords Match!"
+        }else{
+            confirmpass.style.backgroundColor = red;
+            message.style.color = red;
+            message.innerHTML = "Passwords Do Not Match!"
+        }
+}
 
+    </script>
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

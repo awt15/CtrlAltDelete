@@ -79,7 +79,8 @@
                     </div>
                     <div class="form-group">
                         <label for="confirmpassword">Confirm Password:</label>
-                        <input type="password" id="confirmPassword" name="password2" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
+                        <input type="password" id="confirmPassword" name="password2" onkeyup="check(); return false;" class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
+                        <span id="confirmMessage" class="confirmMessage"></span>
                     </div>
                     <div class="panel-footer">
                         <div class="row">
@@ -93,7 +94,25 @@
         </div>
     </div>
     <!-- /#container --> 
-
+    <script>
+        function check(){
+            var pass = document.getElementById('password');
+            var confirmpass = document.getElementById('confirmPassword');
+            var message = document.getElementById('confirmMessage');
+            var green = "#66cc66";
+            var red = "#ff6666";
+            if(pass.value == confirmpass.value){
+                confirmpass.style.backgroundColor = green;
+                message.style.color = green;
+                message.innerHTML = "Passwords Match!"
+            }
+            else{
+                confirmpass.style.backgroundColor = red;
+                message.style.color = red;
+                message.innerHTML = "Passwords Do Not Match!"
+            }
+        }
+    </script>
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
