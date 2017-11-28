@@ -149,7 +149,7 @@
                  if ($perm != 0)
                  {
                     echo "<div class='col-sm-offset-6 col-sm-2'>";
-                        echo "<a class='btn btn-lg btn-danger btn-block' type = 'submit'>Delete Project</a>";
+                        echo "<a class='btn btn-lg btn-danger btn-block' type = 'submit' href='changeproject.php?pid=$pid'>Delete Project</a>";
                     echo "</div>";
                     echo "<div class='col-sm-2'>";
                         echo "<a class='btn btn-lg btn-primary btn-block' type = 'submit' href='viewProject.php'>Save</a>";
