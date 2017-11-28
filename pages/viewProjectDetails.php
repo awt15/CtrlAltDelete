@@ -123,6 +123,8 @@
                     if(mysqli_num_rows($userinproj) != 0)
                     {
                         $pid = $testpid;
+                        $permrow = mysqli_fetch_row($userinproj);
+                        $perm = $permrow[0];
                     }
                 }
                 
@@ -141,15 +143,27 @@
                 ?>
             </form>
             <div class="row">
-                <div class="col-sm-offset-6 col-sm-2">
-                    <a class="btn btn-lg btn-danger btn-block" type = "submit">Delete Project</a>
-                </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-lg btn-primary btn-block" type = "submit" href="viewProject.php">Save</a>
-                </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-lg btn-default btn-block" type = "submit" href="<?php echo "viewProject.php?var=$pname"; ?>">Cancel</a>
-                </div>
+            <?php                    
+                
+                //Only show these buttons if the user is admin of project
+                 if ($perm != 0)
+                 {
+                    echo "<div class='col-sm-offset-6 col-sm-2'>";
+                        echo "<a class='btn btn-lg btn-danger btn-block' type = 'submit'>Delete Project</a>";
+                    echo "</div>";
+                    echo "<div class='col-sm-2'>";
+                        echo "<a class='btn btn-lg btn-primary btn-block' type = 'submit' href='viewProject.php'>Save</a>";
+                    echo "</div>";
+                        echo "<div class='col-sm-2'>";
+                        echo "<a class='btn btn-lg btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
+                    echo "</div>";
+                 }
+                 else
+                 {
+                     echo "<div class='col-sm-offset-8 col-sm-2'>";
+                     echo "<a class='btn btn-lg btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
+                 }
+            ?>
             </div>
         </div>
         <!-- /#page-wrapper -->
