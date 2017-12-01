@@ -170,7 +170,7 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Project 1 Tasks
@@ -198,7 +198,7 @@
                     </div>
                 </div>
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Project 2 Tasks
@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-offset-6 col-lg-6">
+                <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Project 3 Tasks
