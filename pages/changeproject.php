@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['username']))
+    {
+        header("Location: login.php");
+        exit;
+    }
+    
     $pid = $_GET['pid'];
     $connection = mysqli_connect("localhost", "root", "", "cen4020");
         if ($connection == false)

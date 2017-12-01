@@ -2,7 +2,12 @@
 <html lang="en">
 
 <?php
-   session_start();
+    session_start();
+    if (!isset($_SESSION['username']))
+    {
+        header("Location: login.php");
+        exit;
+    }
 ?>
 
 <head>

@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (!isset($_SESSION['username']))
+    {
+        header("Location: login.php");
+        exit;
+    }
+    
     $blank = "";
     if($_POST['projectName'] != "" && $_POST['details']!="" && $_POST['projectKey'] != "" && $_POST['confirmProjectKey'] != "")
     {
@@ -32,6 +38,7 @@
                     $result = mysqli_query($connection, "INSERT INTO belongto (username, projectID, permissions) VALUES ('$user', $ID, 1)");
                     mysqli_close($connection);
                     header("Location: myProject.php");
+                    exit;
                 }
                 else
                 {
@@ -41,9 +48,7 @@
             }
         }
     }
-    else
-    {
-        header("Location: createProject.php");
-        exit;
-    }
+    
+    header("Location: createProject.php");
+    exit;
 ?>

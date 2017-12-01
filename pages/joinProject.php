@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?
+    session_start();
+    if (!isset($_SESSION['username']))
+    {
+        header("Location: login.php");
+        exit;
+    }
+?>
+
 <head>
 
     <meta charset="utf-8">

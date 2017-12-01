@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (!isset($_SESSION['username']))
+    {
+        header("Location: login.php");
+        exit;
+    }
+    
     $blank = "";
     if($_POST['projectID'] != "" && $_POST['dueDate']!="" && $_POST['priority'] != "" && $_POST['title'] != "" && $_POST['assignee'] != "" && $_POST['taskDescript'])
     {
