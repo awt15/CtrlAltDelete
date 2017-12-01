@@ -37,14 +37,40 @@
     <![endif]-->
     <!-- CUSTOM CSS -->
     <link href="../customcss/custom.css" rel="stylesheet">
+<style>
+    body{
+        background-color: #D2F1EB;
+    }
+    .drop-shadow:before,
+    .drop-shadow:after {
+        content:"";
+        position:absolute;
+        z-index:-2;
+    }
+
+    .drop-shadow p {
+        font-size:16px;
+        font-weight:bold;
+    }
+
+    .raised {
+        -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+           -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+</style>
+
 </head>
 
 <body>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+            <div class="col-md-6">
+                <img src="CtrlAltDelete.jpg">
+            </div>
+            <div class="col-md-6">
+                <div class="login-panel panel panel-default drop-shadow raised">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
@@ -56,11 +82,6 @@
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button class="btn btn-lg btn-success btn-block" type = "submit" name = "login">Login</button>
