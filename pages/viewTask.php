@@ -182,10 +182,7 @@
             </div>
             </br>
             <div class="row">
-                <div class="col-sm-offset-7 col-sm-2">
-                    <button class="btn btn-primary btn-block">Comment</button>
-                </div>
-                <div class="col-sm-2">
+                <div class="col-sm-offset-9 col-sm-2">
                     <?php
                         if ($uname == $_SESSION['username'])
                         {
@@ -196,12 +193,26 @@
                                 echo "<a href='changeStatus.php?stat=2&var=$tid' class='btn btn-danger btn-block'>Complete Task</a>";
                             }
                             else if ($status == 3){
-                                echo "<button class='btn btn-basic btn-block'>Completed</button>";
+                                echo "<button class='btn btn-basic btn-block disabled'>Completed</button>";
                             }
                         }
                     ?>
                     
                 </div>
+            </div>
+            <div class="row">
+                <?php
+                    echo"
+                    <form action = 'comment.php?var=$tid' method = 'post' style='font-size: 120%;''>
+                        <div class='form-group'>
+                            <label for='comment'>Comment:</label>
+                            <textarea class='form-control' rows='5' id='comment' name='comment' required='required'></textarea>
+                        </div>
+                        <div class='col-sm-offset-9 col-sm-2'>
+                            <button class='btn btn-primary btn-block' type = 'submit'>Comment</button>
+                        </div>
+                    </form>";
+                ?>
             </div>
         </div>
     <!-- /#wrapper -->
