@@ -204,9 +204,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="createTask.php" class="btn btn-primary btn-block">Create a Task</a>
-                </div>
+                <?php
+                    echo "<div class='col-sm-offset-8 col-sm-2'>";
+                    echo "<a href='createTask.php?pid=$project' class='btn btn-primary btn-block'>Create a Task</a>";
+                    echo "</div>";
+                ?>
                 <div class="col-sm-2">
                 <?php
                     echo "<a href='viewProjectDetails.php?title=$title' class='btn btn-primary btn-block'>View/Edit Project Details</a>";

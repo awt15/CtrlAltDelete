@@ -121,7 +121,14 @@
                     <form style="font-side: 120%" action="taskCreation.php" method="post">
                         <div class="form-group">
                             <label for="projectID">Project ID:</label>
-                            <input type="text" id="projectID" name="projectID" class="form-control">
+                            <input type="text" id="projectID" name="projectID"
+                            <?php
+                                if (isset($_GET['pid']))
+                                {
+                                    echo "value=" . $_GET['pid'];
+                                }
+                            ?>
+                            class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="dueDate">Due Date:</label>
