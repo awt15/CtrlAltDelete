@@ -20,13 +20,8 @@
 		$resultsL = mysqli_fetch_row($resultsList);
 		$proj = $resultsL[0];
 
-		$result = mysqli_query($connection, "INSERT INTO 'comments' ('commentID', 'commentDate', 'projectID', 'text', 'username') VALUES (NULL, '$today', '$proj', '$comment', '$user')");
+		$result = mysqli_query($connection, "INSERT INTO comments (commentID, text, commentDate, username, projectID) VALUES (NULL, '$comment', '$today', '$user', '$proj')");
 
-		if($result)
-		{
-			echo "TESTING!";
-			die();
-		}
 		header("Location: viewTask.php?var=$tid");
 		exit;
 	}
