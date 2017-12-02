@@ -142,6 +142,7 @@
                                 <th>Assigned To</th>
                                 <th>Priority</th>
                                 <th>Status</th>
+                                <th>Due Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -176,6 +177,7 @@
                                         $uname = $row[2];
                                         $status = $row[3];
                                         $abb = $row[4];
+                                        $date = $row[5];
 
                                         $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
                                         $asname = mysqli_fetch_row($asnameL);
@@ -221,6 +223,7 @@
                                             echo "Completed";
                                         }
                                         echo "</td>";
+                                        echo "<td>$date</td>";
                                         echo "</tr>";
 
                                     }

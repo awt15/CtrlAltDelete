@@ -204,19 +204,49 @@
                     
                 </div>
             </div>
+            </br>
             <div class="row">
-                <?php
-                    echo"
-                    <form action = 'comment.php?var=$tid' method = 'post' style='font-size: 120%;''>
-                        <div class='form-group'>
-                            <label for='comment'>Comment:</label>
-                            <textarea class='form-control' rows='5' id='comment' name='comment' required='required'></textarea>
-                        </div>
-                        <div class='col-sm-offset-9 col-sm-2'>
-                            <button class='btn btn-primary btn-block' type = 'submit'>Comment</button>
-                        </div>
-                    </form>";
-                ?>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Comments:</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <?php
+                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                            $results = mysqli_query($connection, "SELECT text, username, commentDate FROM comments WHERE taskID = '$tid'");
+                            while($row = mysqli_fetch_row($results))
+                            {
+                                $comment = $row[0];
+                                $user = $row[1];
+                                $day = $row[2];
+                                $findLeaderName= mysqli_query($connection, "SELECT first, last FROM users WHERE username='$user'");
+                                $leaderRow = mysqli_fetch_row($findLeaderName);
+                                $leaderFirst = $leaderRow[0];
+                                $leaderLast = $leaderRow[1];
+
+                                echo "<a href='account.php?user=$user'>$leaderFirst  $leaderLast</a>";
+                                echo " added a comment on - '$day' <br>";
+
+                                echo "<p>'$comment'</p>";
+                                echo "<hr><br>";
+
+                            }
+
+                        ?>
+                        <?php
+                            echo"
+                            <form action = 'comment.php?var=$tid' method = 'post' style='font-size: 120%;''>
+                                <div class='form-group'>
+                                    <textarea class='form-control' rows='5' id='comment' name='comment' required='required'></textarea>
+                                </div>
+                                <div class='col-sm-offset-9 col-sm-2'>
+                                    <button class='btn btn-primary btn-block' type = 'submit'>Comment</button>
+                                </div>
+                            </form>";
+                        ?>
+                    </div>
+                </div>
+
             </div>
         </div>
     <!-- /#wrapper -->
