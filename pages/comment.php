@@ -13,7 +13,8 @@
 			echo "Connection Failed!";
 			die();
 		}
-
+        
+        date_default_timezone_set('America/New_York');
 		$today = date("Y-m-d");
 
 		$resultsList = mysqli_query($connection, "SELECT projectID FROM tasks WHERE taskID ='$tid'");

@@ -5,6 +5,7 @@
         header("Location: login.php");
         exit;
     }
+    date_default_timezone_set('America/New_York');
     
     $connection = mysqli_connect("localhost", "root", "", "cen4020");
     if ($connection == false)
