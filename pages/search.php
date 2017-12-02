@@ -110,65 +110,12 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Create a New Task</h1>
+                    <h1 class="page-header">Search</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <!-- ALL OF THESE NEEDS IDs -->
-                    <form style="font-side: 120%" action="taskCreation.php" method="post">
-                        <div class="form-group">
-                            <label for="projectID">Project ID:</label>
-                            <input type="text" id="projectID" name="projectID"
-                            <?php
-                                if (isset($_GET['pid']))
-                                {
-                                    echo "value=" . $_GET['pid'];
-                                }
-                            ?>
-                            class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="dueDate">Due Date:</label>
-                            <input type="text" id="dueDate" name="dueDate" class="form-control" placeholder="yyyy-mm-dd">
-                        </div>
-                        <?php
-                        echo "<div class='form-group'>";
-                            echo "<label for='priority'>Priority:</label>";
-                            echo "<select id='priority' name='priority' class='form-control'>";
-                                echo "<option value ='1'>Low</option>";
-                                echo "<option value ='2'>Medium</option>";
-                                echo "<option value ='3'>High</option>";
-                            echo "</select>";
-                        echo "</div>";
-                        ?>
-                        <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input type="text" id="title" name="title" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="assignee">Assignee Username:</label>
-                            <input type="text" id="assignee" name="assignee" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="task">Task Description: </label>
-                            <input type="text long-field" id="task" name="taskDescript" class="form-control">
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-sm-offset-10 col-sm-2">
-                                    <button type="submit" class="btn btn-primary btn-block" name="create">Create Task</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
         </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
+        <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>

@@ -97,7 +97,7 @@
                             <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-search fa-fw"></i> Search</a>
+                            <a href="search.php"><i class="fa fa-search fa-fw"></i> Search</a>
                         </li>
                     </ul>
                 </div>
