@@ -99,6 +99,9 @@
                         <li>
                             <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> Current Tasks</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
