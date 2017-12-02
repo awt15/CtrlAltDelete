@@ -114,6 +114,25 @@
                     $title =$_GET['var'];?></h1>
                 </div>
             </div>
+
+
+
+            <div class = "row">
+                <form class = "col-lg-offset-9 col-lg-3" name="sortby" action="" method="post">
+                <select name="sortoption"> <?php $sort = $_POST['sortoption']; ?>
+                   <option value="datecreated" <?php if ($sort == 'datecreated') echo 'selected="selected"'; ?> >Date Created</option>
+                   <option value="status" <?php if ($sort == 'status') echo 'selected="selected"'; ?> >Status</option>
+                   <option value="priority" <?php if ($sort == 'priority') echo 'selected="selected"'; ?> >Priority</option>
+                   <option value="duedate" <?php if ($sort == 'duedate') echo 'selected="selected"'; ?> >Due Date</option>
+                </select>
+                <input type="submit" value="Sort" />
+                </form>
+            </div>
+
+            
+
+
+
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table">
@@ -132,7 +151,22 @@
                                 $projectList = mysqli_query($connection, "SELECT projectID FROM projects WHERE projectName = '$pname'");
                                 $projectL = mysqli_fetch_row($projectList);
                                 $project = $projectL[0];
-                                $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation FROM tasks WHERE projectID='$project'");
+                                $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, dueDate FROM tasks WHERE projectID='$project'");
+                                if ($sort == 'status'){
+                                    $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, dueDate FROM tasks WHERE projectID='$project' ORDER BY status ASC");
+                                }
+                                if ($sort == 'priority'){
+                                    $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, dueDate FROM tasks WHERE projectID='$project' ORDER BY priority DESC");
+                                }
+                                if ($sort == 'duedate'){
+                                    $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, dueDate FROM tasks WHERE projectID='$project' ORDER BY dueDate ASC");
+                                }
+                                /*switch($sort){
+                                            case 'status':
+                                                $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation FROM tasks WHERE projectID='$project' ORDER BY status ASC");
+                                            case 'priority':
+                                                $results .= 'ORDER BY priority DESC';
+                                }*/
                                 if(mysqli_num_rows($results) != 0)
                                 {
                                     while($row = mysqli_fetch_row($results))
@@ -206,12 +240,12 @@
             <div class="row">
                 <?php
                     echo "<div class='col-sm-offset-8 col-sm-2'>";
-                    echo "<a href='createTask.php?pid=$project' class='btn btn-primary btn-block'>Create a Task</a>";
+                    echo "<a href='createTask.php?pid=$project' class='btn btn-info btn-block'>Create a Task</a>";
                     echo "</div>";
                 ?>
                 <div class="col-sm-2">
                 <?php
-                    echo "<a href='viewProjectDetails.php?title=$title' class='btn btn-primary btn-block'>View/Edit Project Details</a>";
+                    echo "<a href='viewProjectDetails.php?title=$title' class='btn btn-primary btn-block'>View/Edit Project</a>";
                 ?>
                 </div>
            </div>
