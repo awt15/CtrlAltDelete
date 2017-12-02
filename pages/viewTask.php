@@ -166,6 +166,10 @@
                 </div>
                 <div class="col-sm-4">
                     <label for="dueDate">Due Date:</label>
+                    <?php 
+                        $phpdate = strtotime($due);
+                        $due = date('m/d/Y', $phpdate);
+                    ?>
                     <div><?php echo "$due"?></div>
                 </div>
                 <div class="col-sm-4">
@@ -220,8 +224,11 @@
                                 $leaderFirst = $leaderRow[0];
                                 $leaderLast = $leaderRow[1];
 
+                                $phpdate = strtotime($day);
+                                $day = date('m/d/Y', $phpdate);
+
                                 echo "<a href='account.php?user=$user'>$leaderFirst  $leaderLast</a>";
-                                echo " added a comment on - '$day' <br>";
+                                echo " added a comment - $day <br>";
 
                                 echo "<p>'$comment'</p>";
                                 echo "<hr><br>";

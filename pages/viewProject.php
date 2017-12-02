@@ -179,6 +179,9 @@
                                         $abb = $row[4];
                                         $date = $row[5];
 
+                                        $phpdate = strtotime($date);
+                                        $date = date('m/d/Y', $phpdate);
+
                                         $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
                                         $asname = mysqli_fetch_row($asnameL);
                                         $fname = $asname[0];

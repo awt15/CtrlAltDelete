@@ -143,6 +143,8 @@
                             $projectRow = mysqli_fetch_row($findProjectInfo);
                             $pname = $projectRow[0];
                             $pdate = $projectRow[1];
+                            $phpdate = strtotime($pdate);
+                            $pdate = date('m/d/Y', $phpdate);
                             
                             echo "<tr>";
                             echo "<td>";
