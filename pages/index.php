@@ -173,13 +173,18 @@
                                                     $dateRow = mysqli_fetch_row($findDate);
                                                     $date = $dateRow[0];
 
+                                                    $findLeaderName= mysqli_query($connection, "SELECT first, last FROM users WHERE username='$user'");
+                                                    $leaderRow = mysqli_fetch_row($findLeaderName);
+                                                    $leaderFirst = $leaderRow[0];
+                                                    $leaderLast = $leaderRow[1];
+
                                                     $counter += 1;
 
                                                     echo "<div class='panel panel-default'>";
                                                     echo "<div class='panel-body'>";
 
                                                     if ($type == 1){
-                                                        echo "<strong><a href='account.php?user=$user'>$user</a></strong> commented on ";
+                                                        echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a></strong> commented on ";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
                                                         $phpdate = strtotime($date);
                                                         $newtime = date('g:i A', $phpdate);
@@ -188,7 +193,7 @@
                                                     }
 
                                                     else if ($type == 2){
-                                                        echo "<strong><a href='account.php?user=$user'>$user</a></strong> created a task ";
+                                                        echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a></strong> created a task ";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
                                                         $phpdate = strtotime($date);
                                                         $newtime = date('g:i A', $phpdate);
@@ -197,7 +202,7 @@
                                                     }
 
                                                     else if ($type == 3){
-                                                        echo "<strong><a href='account.php?user=$user'>$user</a></strong> started working on ";
+                                                        echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a></strong> started working on ";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
                                                         $phpdate = strtotime($date);
                                                         $newtime = date('g:i A', $phpdate);
@@ -206,7 +211,7 @@
                                                     }
 
                                                     else if ($type == 4){
-                                                        echo "<strong><a href='account.php?user=$user'>$user</a></strong> completed ";
+                                                        echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a></strong> completed ";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
                                                         $phpdate = strtotime($date);
                                                         $newtime = date('g:i A', $phpdate);
@@ -217,11 +222,8 @@
 
 
                                                     echo "</div>";
-                                                    echo "<div class='panel-footer'>";
                                                     echo "<div class='row'>";
                                                     echo "<div class='col-sm-offset-8 col-sm-2'>";
-                                                    //echo "<button type='button' class='btn btn-primary'>Comment</button>";
-                                                    echo "</div>";
                                                     echo "</div>";
                                                     echo "</div>";
                                                     echo "</div>";
@@ -247,7 +249,7 @@
                         <div class="panel-body">
                             <div class="list-group">
                                 <ul class="list-group-item">
-                                    <i class="fa fa-arrow-up fa-fw"></i> High Priority Task
+                                    <i class="fa fa-arrow-up fa-fw"></i> <strong> High Priority Task </strong>
                                     </span>
                                         <?php
                                             $connection = mysqli_connect("localhost", "root", "", "cen4020");
@@ -259,7 +261,7 @@
                                         ?>
                                 </ul>
                                 <ul class="list-group-item">
-                                    <i class="fa fa-angle-double-up fa-fw"></i> Medium Priority Task
+                                    <i class="fa fa-angle-double-up fa-fw"></i> <strong> Medium Priority Task </strong>
                                     </span>
                                         <?php
                                             $connection = mysqli_connect("localhost", "root", "", "cen4020");
@@ -271,7 +273,7 @@
                                         ?>
                                 </ul>
                                 <ul class="list-group-item">
-                                    <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
+                                    <i class="fa fa-angle-up fa-fw"></i> <strong> Low Priority Task </strong>
                                     </span>
                                     <?php
                                             $connection = mysqli_connect("localhost", "root", "", "cen4020");
