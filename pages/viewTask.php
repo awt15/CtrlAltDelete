@@ -131,13 +131,14 @@
                     $projectlist = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID = '$pid'");
                     $projectL = mysqli_fetch_row($projectlist);
                     $project = $projectL[0];
+                    $formatted_project = urlencode($project);
 
                     $taskstatus = mysqli_query($connection, "SELECT status FROM tasks WHERE taskID = '$tid'");
                     $taskrow = mysqli_fetch_row($taskstatus);
                     $status = $taskrow[0];
 
                     echo "<h1 class='page-header'>";
-                    echo "<a href='#'>$project</a>/";
+                    echo "<a href=viewProject.php?var=$formatted_project>$project</a>/";
                     echo "$abb-$tid: $title</h1>";
 
                     ?>
