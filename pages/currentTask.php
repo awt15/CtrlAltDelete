@@ -122,23 +122,46 @@
             <!-- /.row -->
             <div class="panel panel-default">
                 <div class="panel-body">
+                
+                <div class = "row">
+                    <form class = "col-lg-offset-9 col-lg-3" name="sortby" action="" method="post">
+                        <select name="sortoption"> <?php $sort = $_POST['sortoption']; ?>
+                           <option value="datecreated" <?php if ($sort == 'datecreated') echo 'selected="selected"'; ?> >Date Created</option>
+                           <option value="status" <?php if ($sort == 'status') echo 'selected="selected"'; ?> >Status</option>
+                           <option value="priority" <?php if ($sort == 'priority') echo 'selected="selected"'; ?> >Priority</option>
+                           <option value="duedate" <?php if ($sort == 'duedate') echo 'selected="selected"'; ?> >Due Date</option>
+                        </select>
+                        <input type="submit" value="Sort" />
+                    </form>
+                </div>
+                
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Tasks</th>
+                                        <th>Project Name</th>
+                                        <th>Task</th>
                                         <th>Priority</th>
                                         <th>Status</th>
+                                        <th>Due Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
+                                        $user = $_SESSION['username'];
                                         $connection = mysqli_connect("localhost", "root", "", "cen4020");
-                                        $taskList = mysqli_query($connection, "SELECT projectID FROM projects WHERE projectName = '$pname'");
-                                        $projectL = mysqli_fetch_row($projectList);
-                                        $project = $projectL[0];
-                                        $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation FROM tasks WHERE projectID='$project'");
+                                        $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, projectID, dueDate FROM tasks WHERE username='$user'");
+                                        if ($sort == 'status'){
+                                        $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, projectID, dueDate FROM tasks WHERE username='$user'ORDER BY status ASC");
+                                        }
+                                        if ($sort == 'priority'){
+                                            $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, projectID, dueDate FROM tasks WHERE username='$user' ORDER BY priority DESC");
+                                        }
+                                        if ($sort == 'duedate'){
+                                            $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation, projectID, dueDate FROM tasks WHERE username='$user' ORDER BY dueDate ASC");
+                                        }
+                                        
                                         if(mysqli_num_rows($results) != 0)
                                         {
                                             while($row = mysqli_fetch_row($results))
@@ -148,19 +171,21 @@
                                                 $uname = $row[2];
                                                 $status = $row[3];
                                                 $abb = $row[4];
+                                                $pid = $row[5];
+                                                $due = $row[6];
 
                                                 $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
                                                 $asname = mysqli_fetch_row($asnameL);
                                                 $fname = $asname[0];
                                                 $lname = $asname[1];
-
+                                                
+                                                $findprojname = mysqli_query($connection, "SELECT projectName FROM projects WHERE projectID='$pid'");
+                                                $res = mysqli_fetch_row($findprojname);
+                                                $pname = $res[0];
                                                 echo "<tr>";
+                                                echo "<td><a href='viewProject.php?var=$pname'>$pname</a></td>";
                                                 echo "<td>";
                                                 echo "<a href='viewTask.php?var=$tid'>$abb-$tid</a>";
-                                                echo "</td>";
-
-                                                echo "<td>";
-                                                echo "<a href='account.php?user=$uname'>$fname $lname</a>";
                                                 echo "</td>";
 
                                                 echo "<td>";
@@ -193,6 +218,7 @@
                                                     echo "Completed";
                                                 }
                                                 echo "</td>";
+                                                echo "<td>$due</td>";
                                                 echo "</tr>";
 
                                             }
