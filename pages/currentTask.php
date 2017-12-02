@@ -96,7 +96,7 @@
                         </li>
 
                         <li>
-                            <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> Current Tasks</a>
+                            <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
@@ -115,81 +115,100 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Current Tasks</h1>
+                    <h1 class="page-header">My Tasks</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <!-- ALL OF THESE NEEDS IDs -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Test Task 1</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Test Task 2</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                    <div class="panel panel-success">
-                        <div class="panel-heading">Test Task 3</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Test Task 4</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">Test Task 5</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">Test Task 6</div>
-                        <div class="panel-body">Project: </div>
-                        <div class="panel-body">Due Date: </div>
-                        <div class="panel-body">Priority: </div>
-                        <div class="panel-body">Title: </div>
-                        <div class="panel-body">Assignee: </div>
-                        <div class="panel-body">Task Description: </div>
-                    </div>
-
-                </div>
-                <div class="panel-footer">
                     <div class="row">
-                        <div class="col-sm-offset-10 col-sm-2">
-                            <button type="submit" class="btn btn-primary">Next Page</button>
+                        <div class="col-sm-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tasks</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                        $taskList = mysqli_query($connection, "SELECT projectID FROM projects WHERE projectName = '$pname'");
+                                        $projectL = mysqli_fetch_row($projectList);
+                                        $project = $projectL[0];
+                                        $results = mysqli_query($connection, "SELECT taskID, priority, username, status, abbreviation FROM tasks WHERE projectID='$project'");
+                                        if(mysqli_num_rows($results) != 0)
+                                        {
+                                            while($row = mysqli_fetch_row($results))
+                                            {
+                                                $tid = $row[0];
+                                                $priority = $row[1];
+                                                $uname = $row[2];
+                                                $status = $row[3];
+                                                $abb = $row[4];
+
+                                                $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
+                                                $asname = mysqli_fetch_row($asnameL);
+                                                $fname = $asname[0];
+                                                $lname = $asname[1];
+
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo "<a href='viewTask.php?var=$tid'>$abb-$tid</a>";
+                                                echo "</td>";
+
+                                                echo "<td>";
+                                                echo "<a href='account.php?user=$uname'>$fname $lname</a>";
+                                                echo "</td>";
+
+                                                echo "<td>";
+                                                
+                                                if($priority == 1)
+                                                {
+                                                    echo "<i class='fa fa-angle-up fa-fw'></i>";
+                                                }
+                                                elseif ($priority == 2)
+                                                {
+                                                    echo "<i class='fa fa-angle-double-up fa-fw'></i>";
+                                                }
+                                                else
+                                                {
+                                                    echo "<i class='fa fa-arrow-up fa-fw'></i>";
+                                                }
+
+                                                echo "</td>";
+                                                echo "<td>";
+                                                if($status == 1)
+                                                {
+                                                    echo "Not Started";
+                                                }
+                                                elseif($status == 2)
+                                                {
+                                                    echo "In progress";
+                                                }
+                                                else
+                                                {
+                                                    echo "Completed";
+                                                }
+                                                echo "</td>";
+                                                echo "</tr>";
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "<tr><td>No Tasks</td>";
+                                            echo "<td>N/A</td>";
+                                            echo "<td>N/A</td>";
+                                            echo "<td>N/A</td></tr>";
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
