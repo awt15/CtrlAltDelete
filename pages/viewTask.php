@@ -186,16 +186,19 @@
                     <button class="btn btn-primary btn-block">Comment</button>
                 </div>
                 <div class="col-sm-2">
-                    <?php 
-                        if ($status == 1){
-                            echo "<a href='changeStatus.php?stat=1&var=$tid' onclick=changeColor class='btn btn-success btn-block'>Start Task</a>";
+                    <?php
+                        if ($uname == $_SESSION['username'])
+                        {
+                            if ($status == 1){
+                                echo "<a href='changeStatus.php?stat=1&var=$tid' onclick=changeColor class='btn btn-success btn-block'>Start Task</a>";
+                            }
+                            else if ($status == 2){
+                                echo "<a href='changeStatus.php?stat=2&var=$tid' class='btn btn-danger btn-block'>Complete Task</a>";
+                            }
+                            else if ($status == 3){
+                                echo "<button class='btn btn-basic btn-block'>Completed</button>";
+                            }
                         }
-                        else if ($status == 2){
-                            echo "<a href='changeStatus.php?stat=2&var=$tid' class='btn btn-danger btn-block'>Complete Task</a>";
-                        }
-                        else if ($status == 3){
-                            echo "<button class='btn btn-basic btn-block'>Completed</button>";
-                        }   
                     ?>
                     
                 </div>
