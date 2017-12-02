@@ -124,45 +124,43 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <ul>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
                                         <!-- MAKE IT POSSIBLE TO CLICK ON PEOPLES NAME -->
-                                        <strong><a href="#">Vita</a></strong> started on Task-001: TESTING.
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="row">
-                                            <div class="col-sm-offset-10 col-sm-2">
-                                                <button type="button" class="btn btn-primary">Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <!-- MAKE IT POSSIBLE TO CLICK ON PEOPLES NAME -->
-                                        <strong><a href="#">Khoa</a></strong> started on Task-002: TESTING.
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="row">
-                                            <div class="col-sm-offset-10 col-sm-2">
-                                                <button type="button" class="btn btn-primary">Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <!-- MAKE IT POSSIBLE TO CLICK ON PEOPLES NAME -->
-                                        <strong><a href="#">Mark</a></strong> started on Task-003: TESTING.
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="row">
-                                            <div class="col-sm-offset-10 col-sm-2">
-                                                <button type="button" class="btn btn-primary">Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <?php
+                                            $user = $_SESSION['username'];
+                                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                            $results = mysqli_query($connection, "SELECT commentID FROM comments ORDER BY commentdate DESC");
+                                            if (mysqli_num_rows($results) != 0)
+                                            {
+                                                while($row = mysqli_fetch_row($results))
+                                                {
+                                                    $cid = $row[0];
+                                                    $findUser = mysqli_query($connection, "SELECT username FROM comments WHERE commentID='$cid'");
+                                                    $userRow = mysqli_fetch_row($findUser);
+                                                    $user = $userRow[0];
+                                                    $findDate= mysqli_query($connection, "SELECT commentDate FROM comments WHERE commentID='$cid'");
+                                                    $dateRow = mysqli_fetch_row($findDate);
+                                                    $date = $dateRow[0];
+                                                    
+                                                    $findText = mysqli_query($connection, "SELECT text FROM comments WHERE commentID = '$cid'");
+                                                    $textRow = mysqli_fetch_row($findText);
+                                                    $text = $textRow[0];
+
+                                                    echo "<div class='panel panel-default'>";
+                                                    echo "<div class='panel-body'>";
+                                                    echo "<strong><a href='#'>$user</a></strong> commented \"$text\"";
+                                                    echo "</div>";
+                                                    echo "<div class='panel-footer'>";
+                                                    echo "<div class='row'>";
+                                                    echo "<div class='col-sm-offset-8 col-sm-2'>";
+                                                    //echo "<button type='button' class='btn btn-primary'>Comment</button>";
+                                                    echo "</div>";
+                                                    echo "</div>";
+                                                    echo "</div>";
+                                                    echo "</div>";
+                                                }
+                                            }
+                                         ?>
+
                             </ul>
                         </div>
                         <!-- /.panel-body -->
