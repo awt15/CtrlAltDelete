@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2017 at 08:20 PM
+-- Generation Time: Dec 02, 2017 at 08:39 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -60,7 +60,8 @@ CREATE TABLE `changes` (
   `projectID` int(11) DEFAULT NULL,
   `taskID` int(11) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL,
-  `changeType` int(11) NOT NULL
+  `changeType` int(11) NOT NULL,
+  `username` varchar(45) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,7 +180,8 @@ ALTER TABLE `belongto`
 ALTER TABLE `changes`
   ADD PRIMARY KEY (`changeID`),
   ADD KEY `changes_ibfk_1` (`projectID`),
-  ADD KEY `changes_ibfk_2` (`taskID`);
+  ADD KEY `changes_ibfk_2` (`taskID`),
+  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `comments`
@@ -259,7 +261,8 @@ ALTER TABLE `belongto`
 --
 ALTER TABLE `changes`
   ADD CONSTRAINT `changes_ibfk_1` FOREIGN KEY (`projectID`) REFERENCES `projects` (`projectID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `changes_ibfk_2` FOREIGN KEY (`taskID`) REFERENCES `tasks` (`taskID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `changes_ibfk_2` FOREIGN KEY (`taskID`) REFERENCES `tasks` (`taskID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `changes_ibfk_3` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `comments`
