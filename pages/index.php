@@ -130,28 +130,79 @@
                             <ul>
                                         <!-- MAKE IT POSSIBLE TO CLICK ON PEOPLES NAME -->
                                         <?php
+                                            $counter = 0;
                                             $user = $_SESSION['username'];
                                             $connection = mysqli_connect("localhost", "root", "", "cen4020");
-                                            $results = mysqli_query($connection, "SELECT commentID FROM comments ORDER BY commentdate DESC");
+                                            $results = mysqli_query($connection, "SELECT * FROM changes ORDER BY timestamp DESC");
                                             if (mysqli_num_rows($results) != 0)
                                             {
                                                 while($row = mysqli_fetch_row($results))
                                                 {
                                                     $cid = $row[0];
-                                                    $findUser = mysqli_query($connection, "SELECT username FROM comments WHERE commentID='$cid'");
+
+                                                    $findUser = mysqli_query($connection, "SELECT username FROM changes WHERE changeID='$cid'");
                                                     $userRow = mysqli_fetch_row($findUser);
                                                     $user = $userRow[0];
-                                                    $findDate= mysqli_query($connection, "SELECT commentDate FROM comments WHERE commentID='$cid'");
+
+                                                    $findTask = mysqli_query($connection, "SELECT taskID FROM changes WHERE changeID='$cid'");
+                                                    $taskRow = mysqli_fetch_row($findTask);
+                                                    $task = $taskRow[0];
+
+                                                    $findAbr = mysqli_query($connection, "SELECT abbreviation FROM tasks WHERE taskID='$task'");
+                                                    $abrRow = mysqli_fetch_row($findAbr);
+                                                    $abr = $abrRow[0];
+
+                                                    $changeType= mysqli_query($connection, "SELECT changeType FROM changes WHERE changeID='$cid'");
+                                                    $typeRow = mysqli_fetch_row($changeType);
+                                                    $type = $typeRow[0];
+
+                                                    $findDate= mysqli_query($connection, "SELECT timestamp FROM changes WHERE changeID='$cid'");
                                                     $dateRow = mysqli_fetch_row($findDate);
                                                     $date = $dateRow[0];
-                                                    
-                                                    $findText = mysqli_query($connection, "SELECT text FROM comments WHERE commentID = '$cid'");
-                                                    $textRow = mysqli_fetch_row($findText);
-                                                    $text = $textRow[0];
+
+                                                    $counter += 1;
 
                                                     echo "<div class='panel panel-default'>";
                                                     echo "<div class='panel-body'>";
-                                                    echo "<strong><a href='#'>$user</a></strong> commented \"$text\"";
+
+                                                    if ($type == 1){
+                                                        echo "<strong><a href='#'>$user</a></strong> commented on ";
+                                                        echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                                        $phpdate = strtotime($date);
+                                                        $newtime = date('g:i A', $phpdate);
+                                                        $newdate = date('m/d/Y', $phpdate);
+                                                        echo " at $newtime on $newdate";
+                                                    }
+
+                                                    else if ($type == 2){
+                                                        echo "<strong><a href='#'>$user</a></strong> created a task ";
+                                                        echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                                        $phpdate = strtotime($date);
+                                                        $newtime = date('g:i A', $phpdate);
+                                                        $newdate = date('m/d/Y', $phpdate);
+                                                        echo " at $newtime on $newdate";
+                                                    }
+
+                                                    else if ($type == 3){
+                                                        echo "<strong><a href='#'>$user</a></strong> started working on ";
+                                                        echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                                        $phpdate = strtotime($date);
+                                                        $newtime = date('g:i A', $phpdate);
+                                                        $newdate = date('m/d/Y', $phpdate);
+                                                        echo " at $newtime on $newdate";
+                                                    }
+
+                                                    else if ($type == 4){
+                                                        echo "<strong><a href='#'>$user</a></strong> completed ";
+                                                        echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                                        $phpdate = strtotime($date);
+                                                        $newtime = date('g:i A', $phpdate);
+                                                        $newdate = date('m/d/Y', $phpdate);
+                                                        echo " at $newtime on $newdate";
+                                                    }
+
+
+
                                                     echo "</div>";
                                                     echo "<div class='panel-footer'>";
                                                     echo "<div class='row'>";
@@ -161,6 +212,9 @@
                                                     echo "</div>";
                                                     echo "</div>";
                                                     echo "</div>";
+                                                    if ($counter == 5){
+                                                        break;
+                                                    }
                                                 }
                                             }
                                          ?>
