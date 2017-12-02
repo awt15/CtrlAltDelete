@@ -43,7 +43,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Create an Account</h1>
                 <?php 
-                    if($_SESSION['takenErr'])
+                    if(isset($_SESSION['takenErr']))
                     {
                         echo "Username taken";
                     }
