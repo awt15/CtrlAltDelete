@@ -20,8 +20,15 @@
 		$resultsL = mysqli_fetch_row($resultsList);
 		$proj = $resultsL[0];
 
-		$result = mysqli_query($connection, "INSERT INTO comments (commentID, text, commentDate, username, projectID) VALUES (NULL, '$comment', '$today', '$user', '$proj')");
+		$result = mysqli_query($connection, "INSERT INTO comments (commentID, text, commentDate, username, projectID, taskID) VALUES (NULL, '$comment', '$today', '$user', '$proj', '$tid')");
 
+		if($result)
+		{
+			$today = date("Y-m-d H:i:s");
+			$type = 1;
+			$change = mysqli_query($connection, "INSERT INTO changes (changeID, changeType, projectID, taskID, timestamp, username) VALUES (NULL, '$type', '$proj', '$tid', '$today', '$user')");
+
+		}
 		header("Location: viewTask.php?var=$tid");
 		exit;
 	}
