@@ -169,86 +169,51 @@
                     </div>
                     <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Project 1 Tasks
+                            <i class="fa fa-bell fa-fw"></i> Assigned Tasks
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
+                                <ul class="list-group-item">
                                     <i class="fa fa-arrow-up fa-fw"></i> High Priority Task
                                     </span>
-                                </a>
-                                <a href="#" class="list-group-item">
+                                        <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                            $results = mysqli_query($connection, "SELECT * FROM tasks WHERE username='$_SESSION[username]' AND priority=3 AND status <> 3 ORDER BY dueDate");
+                                            while($row = mysqli_fetch_row($results))
+                                            {
+                                                echo "<a href='viewTask.php?var=$row[0]' class='list-group-item'> $row[8]-$row[0] $row[7]</a>";
+                                            }    
+                                        ?>
+                                </ul>
+                                <ul class="list-group-item">
                                     <i class="fa fa-angle-double-up fa-fw"></i> Medium Priority Task
                                     </span>
-                                </a>
-                                <a href="#" class="list-group-item">
+                                        <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                            $results = mysqli_query($connection, "SELECT * FROM tasks WHERE username='$_SESSION[username]' AND priority=2 AND status <> 3 ORDER BY dueDate");
+                                            while($row = mysqli_fetch_row($results))
+                                            {
+                                                echo "<a href='viewTask.php?var=$row[0]' class='list-group-item'> $row[8]-$row[0] $row[7]</a>";
+                                            }    
+                                        ?>
+                                </ul>
+                                <ul class="list-group-item">
                                     <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
                                     </span>
-                                </a>
+                                    <?php
+                                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                            $results = mysqli_query($connection, "SELECT * FROM tasks WHERE username='$_SESSION[username]' AND priority=1 AND status <> 3 ORDER BY dueDate");
+                                            while($row = mysqli_fetch_row($results))
+                                            {
+                                                echo "<a href='viewTask.php?var=$row[0]' class='list-group-item'> $row[8]-$row[0] $row[7]</a>";
+                                            }    
+                                        ?>
+                                </ul>
                             </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Tasks</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Project 2 Tasks
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-double-up fa-fw"></i> Medium Priority Task
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-double-up fa-fw"></i> Medium Priority Task
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Tasks</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Project 3 Tasks
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-angle-up fa-fw"></i> Low Priority Task
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Tasks</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
