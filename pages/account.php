@@ -119,27 +119,57 @@
                     <form style="font-size:120%;">
                         <div class="form-group">
                             <label for="firstname">First name:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['first'];?></p>
+                            <p class="form-control-static bigFont">
+                            <?php
+                                //Clicked a link to another users account
+                                if (isset($_GET['user']))
+                                {
+                                    $set = 1;
+                                    $user = $_GET['user'];
+                                    $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                                    $results = mysqli_query($connection, "SELECT first, last, email FROM users WHERE username='$user'");
+                                    $row = mysqli_fetch_row($results);
+                                    $first = $row[0];
+                                    $last = $row[1];
+                                    $email = $row[2];
+                                }
+                                //Viewing own account
+                                else
+                                {
+                                    $set = 0;
+                                    $user = $_SESSION['username'];
+                                    $first = $_SESSION['first'];
+                                    $last = $_SESSION['last'];
+                                    $email = $_SESSION['email'];
+                                }
+                                    echo $first;
+                            ?></p>
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['last'];?></p>
+                            <p class="form-control-static bigFont"><?php echo $last;?></p>
                         </div>
                         <div class="form-group">
                             <label for="emailaddress">Email Address:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['email'];?></p>
+                            <p class="form-control-static bigFont"><?php echo $email;?></p>
                         </div>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['username'];?></p>
+                            <p class="form-control-static bigFont"><?php echo $user;?></p>
                         </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-sm-offset-10 col-sm-2">
-                                    <a class="btn btn-lg btn-primary btn-block" href="updateAccount.php">Edit Account</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            //Edit account button should only show if the user is on their own page
+                            if ($set == 0)
+                            {
+                                echo "<div class='panel-footer'>";
+                                    echo "<div class='row'>";
+                                        echo "<div class='col-sm-offset-10 col-sm-2'>";
+                                            echo "<a class='btn btn-lg btn-primary btn-block' href='updateAccount.php'>Edit Account</a>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                            }
+                        ?>
                     </form>
                 </div>
             </div>

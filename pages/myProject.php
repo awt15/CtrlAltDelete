@@ -149,7 +149,7 @@
                             echo "<a href='viewProject.php?var=$pname'>$pname</a>";
                             echo "</td>";
                             echo "<td>";
-                            echo "<a href='account.php'>$leaderFirst  $leaderLast</a>";
+                            echo "<a href='account.php?user=$leaderUser'>$leaderFirst  $leaderLast</a>";
                             echo "</td>";
                             echo "<td>";
                             echo "$pdate";

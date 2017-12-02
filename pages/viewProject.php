@@ -154,7 +154,7 @@
                                         echo "</td>";
 
                                         echo "<td>";
-                                        echo "<a href='account.php'>$fname $lname</a>";
+                                        echo "<a href='account.php?user=$uname'>$fname $lname</a>";
                                         echo "</td>";
 
                                         echo "<td>";
