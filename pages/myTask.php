@@ -115,9 +115,6 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                
                 <div class = "row">
                     <form class = "col-lg-offset-9 col-lg-3" name="sortby" action="" method="post">
                         <select name="sortoption"> <?php $sort = $_POST['sortoption']; ?>
@@ -231,8 +228,6 @@
                         </div>
                      </div>
                 </div>
-            </div>
-        </div>
         <!-- /#page-wrapper -->
 
     </div>

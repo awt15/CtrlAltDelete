@@ -92,12 +92,8 @@
                         <li>
                             <a href="myProject.php"><i class="fa fa-folder-open fa-fw"></i> My Projects</a>
                         </li>
-                        <!-- ONLY FOR PEOPLE WHO ARE PROJECT MANAGERS --> 
                         <li>
-                            <a href="createTask.php"><i class="fa fa-tasks fa-fw"></i> Create a New Task</a>
-                        </li>
-                        <li>
-                            <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
+                            <a href="myTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
