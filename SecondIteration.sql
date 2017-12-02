@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2017 at 01:44 AM
+-- Generation Time: Dec 02, 2017 at 08:20 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -40,10 +40,28 @@ CREATE TABLE `belongto` (
 
 INSERT INTO `belongto` (`username`, `projectID`, `permissions`) VALUES
 ('kle', 1, 0),
-('kle', 2, 1),
-('kle', 3, 1),
 ('mwalker', 1, 1),
-('vtran', 2, 0);
+('mwalker', 4, 1),
+('mwalker', 5, 1),
+('mwalker', 6, 1),
+('mwalker', 7, 0),
+('vtran', 1, 0),
+('vtran', 4, 0),
+('yolo', 7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `changes`
+--
+
+CREATE TABLE `changes` (
+  `changeID` int(11) NOT NULL,
+  `projectID` int(11) DEFAULT NULL,
+  `taskID` int(11) DEFAULT NULL,
+  `timestamp` datetime DEFAULT NULL,
+  `changeType` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,7 +74,8 @@ CREATE TABLE `comments` (
   `text` varchar(256) DEFAULT NULL,
   `commentDate` date NOT NULL,
   `username` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `projectID` int(11) NOT NULL
+  `projectID` int(11) NOT NULL,
+  `taskID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -79,8 +98,10 @@ CREATE TABLE `projects` (
 
 INSERT INTO `projects` (`projectID`, `projectName`, `projectStart`, `projectDescription`, `projectKey`) VALUES
 (1, 'Test Project', '2017-11-19', 'Please  Work', '098f6bcd4621d373cade4e832627b4f6'),
-(2, 'Khoas Trip', '2017-11-19', 'YOlo', '098f6bcd4621d373cade4e832627b4f6'),
-(3, 'It works', '2017-11-19', 'haha', '098f6bcd4621d373cade4e832627b4f6');
+(4, 'Test', '2017-11-19', 'Test', '415290769594460e2e485922904f345d'),
+(5, 'Yolo', '2017-11-19', 'swag', '098f6bcd4621d373cade4e832627b4f6'),
+(6, 'Whats this project ID?', '2017-11-20', 'Finding a proj ID', '098f6bcd4621d373cade4e832627b4f6'),
+(7, 'Blah', '2017-12-01', 'yolo', '098f6bcd4621d373cade4e832627b4f6');
 
 -- --------------------------------------------------------
 
@@ -99,6 +120,21 @@ CREATE TABLE `tasks` (
   `title` varchar(256) NOT NULL,
   `abbreviation` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`taskID`, `dueDate`, `username`, `projectID`, `taskDescription`, `priority`, `status`, `title`, `abbreviation`) VALUES
+(1, '2017-10-11', 'mwalker', 6, 'Test this interface', 3, 1, 'How do I sort lines by number of appearances UNIX?', 'WHA'),
+(2, '2017-10-11', 'mwalker', 1, 'Tessssst', 1, 3, 'Test this interface', 'TES'),
+(3, '2017-11-28', 'mwalker', 1, 'Test this interface', 2, 3, 'How do I sort lines by number of appearances UNIX?', 'TES'),
+(4, '2017-11-28', 'vtran', 1, 'Please workkkkk', 3, 3, 'Please work', 'TES'),
+(10, '2017-11-28', 'kle', 1, 'Test', 2, 2, 'Test this please', 'TES'),
+(11, '0000-00-00', 'yolo', 7, 'testing', 1, 1, 'Testing', 'BLA'),
+(12, '2017-12-31', 'mwalker', 1, 'TERR', 1, 1, 'Hopefully this works', 'TES'),
+(13, '2017-11-28', 'mwalker', 1, 'DHJJHDH', 3, 3, 'Real', 'TES'),
+(14, '2017-12-31', 'mwalker', 5, 'GHHGHGHGHG', 1, 1, 'Test this please', 'YOL');
 
 -- --------------------------------------------------------
 
@@ -122,7 +158,8 @@ INSERT INTO `users` (`username`, `first`, `last`, `email`, `passhash`) VALUES
 ('atieu', 'Anthony', 'Tieu', 'atieu@test.com', '098f6bcd4621d373cade4e832627b4f6'),
 ('kle', 'Khoa', 'Le', 'kle@test.com', '098f6bcd4621d373cade4e832627b4f6'),
 ('mwalker', 'Mark', 'Walker', 'mtw14@my.fsu.edu', '5a105e8b9d40e1329780d62ea2265d8a'),
-('vtran', 'Vita', 'Tran', 'vtran@test.com', '098f6bcd4621d373cade4e832627b4f6');
+('vtran', 'Vita', 'Tran', 'vtran@test.com', '098f6bcd4621d373cade4e832627b4f6'),
+('yolo', 'Mark', 'Walker', 'yolo@test.com', '4fded1464736e77865df232cbcb4cd19');
 
 --
 -- Indexes for dumped tables
@@ -137,13 +174,22 @@ ALTER TABLE `belongto`
   ADD KEY `fk_users_has_projects_users1_idx` (`username`);
 
 --
+-- Indexes for table `changes`
+--
+ALTER TABLE `changes`
+  ADD PRIMARY KEY (`changeID`),
+  ADD KEY `changes_ibfk_1` (`projectID`),
+  ADD KEY `changes_ibfk_2` (`taskID`);
+
+--
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`commentID`),
   ADD UNIQUE KEY `commentID_UNIQUE` (`commentID`),
   ADD KEY `fk_comments_users1_idx` (`username`),
-  ADD KEY `fk_comments_projects1_idx` (`projectID`);
+  ADD KEY `fk_comments_projects1_idx` (`projectID`),
+  ADD KEY `taskID` (`taskID`);
 
 --
 -- Indexes for table `projects`
@@ -174,22 +220,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `changes`
+--
+ALTER TABLE `changes`
+  MODIFY `changeID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `taskID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `taskID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -203,9 +255,17 @@ ALTER TABLE `belongto`
   ADD CONSTRAINT `fk_users_has_projects_users1` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `changes`
+--
+ALTER TABLE `changes`
+  ADD CONSTRAINT `changes_ibfk_1` FOREIGN KEY (`projectID`) REFERENCES `projects` (`projectID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `changes_ibfk_2` FOREIGN KEY (`taskID`) REFERENCES `tasks` (`taskID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`taskID`) REFERENCES `tasks` (`taskID`),
   ADD CONSTRAINT `fk_comments_projects1` FOREIGN KEY (`projectID`) REFERENCES `projects` (`projectID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_comments_users1` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
