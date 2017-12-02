@@ -53,8 +53,8 @@
                             $res = mysqli_fetch_row($getname);
                             $pname = $res[0];
 
-                            $today = date("Y-m-d H:i:s");
-                            $change = mysqli_query($connection, "INSERT INTO changes (changeID, changeType, projectID, taskID, timestamp, username) VALUES (NULL, 2, '$project', '$task', '$today', '$user')");
+                            $stamp = date("Y-m-d H:i:s");
+                            $change = mysqli_query($connection, "INSERT INTO changes (changeID, projectID, taskID, timestamp, changetype, username) VALUES (NULL, $project, $task, '$stamp', 2, '$user')");
 
                             header("Location: viewProject.php?var=".urlencode($pname));
                             exit;
