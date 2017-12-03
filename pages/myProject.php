@@ -144,7 +144,7 @@
                             $pname = $projectRow[0];
                             $pdate = $projectRow[1];
                             $phpdate = strtotime($pdate);
-                            $pdate = date('m/d/Y', $phpdate);
+                            $pdate = date('M d, Y', $phpdate);
                             
                             echo "<tr>";
                             echo "<td>";
