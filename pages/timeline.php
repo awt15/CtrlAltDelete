@@ -110,31 +110,14 @@
         <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Join a Project</h1>
+                <h1 class="page-header">Timeline</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
         <div class="panel panel-default">
             <div class="panel-body">
-                <!-- ALL OF THESE NEEDS IDs -->
-                <form style="font-size:120%;" action = "join.php" method = "post">
-                    <div class="form-group">
-                        <label for="projectID">Project-ID:</label>
-                        <input type="text" id="projectID" name = "projectID" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="projectKey">Project Key:</label>
-                        <input type="text" id="projectKey" name = "projectKey" class="form-control">
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-sm-offset-10 col-sm-2">
-                                <button class="btn btn-lg btn-primary btn-block" type = "submit" name="join">Join</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+               <!--VITA ENTER STUFF HERE -->
             </div>
         </div>
     </div>

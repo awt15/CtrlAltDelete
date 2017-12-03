@@ -99,10 +99,10 @@
                             <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
+                            <a href="timeline.php"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-search fa-fw"></i> Search</a>
+                            <a href="search.php"><i class="fa fa-search fa-fw"></i> Search</a>
                         </li>
                     </ul>
                 </div>

@@ -94,7 +94,7 @@
                             <a href="myTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
+                            <a href="timeline.php"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
                         </li>
                         <li>
                             <a href="search.php"><i class="fa fa-search fa-fw"></i> Search</a>
@@ -177,7 +177,10 @@
                 </tbody>
             </table>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
+                <div class="col-sm-offset-6 col-sm-2">
+                    
+                </div>
+                <div class="col-sm-2">
                     <a href="joinProject.php" type="submit" class="btn btn-info btn-block">Join A Project</a>
                 </div>
                 <div class="col-sm-2">

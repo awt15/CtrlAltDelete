@@ -71,8 +71,6 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="account.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
                         <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -96,7 +94,7 @@
                             <a href="myTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
+                            <a href="timeline.php"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
                         </li>
                         <li>
                             <a href="search.php"><i class="fa fa-search fa-fw"></i> Search</a>
