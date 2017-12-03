@@ -136,7 +136,86 @@
 
                     <div class="col-lg-12">
                         <h1 class="page-header">Recommended</h1>
-                        <!--MARK ENTER PHP CODE HERE. SIMILAR TO THE PHP CODE UP TOP ^^ -->
+                        <!-- Advanced Function -->
+                         <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Tasks in Projects with Common Members</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        <?php
+                            $highestCount= 0;
+                            $highestUser = "";
+                            $secondHighest = 0;
+                            $secondUser = "";
+                            $thirdHighest = 0;
+                            $thirdUser = "";
+                            $noUsers = True;
+                            
+                            $results = mysqli_query($connection, "SELECT username FROM belongto WHERE projectID = '$project'");
+                            while ($row = mysqli_fetch_row($results))
+                            {
+                                $user = $row[0];
+                                $findOtherUsers = mysqli_query($connection, "SELECT DISTINCT username FROM belongto WHERE projectID IN (SELECT projectID FROM belongto WHERE username='$user') AND username NOT IN (SELECT username FROM belongto WHERE projectID = '$project')");
+                                while ($newrow = mysqli_fetch_row($findOtherUsers))
+                                {
+                                    $noUsers = False;
+                                    $newUser = $newrow[0];
+                                    if ($newUser == $highestUser || $newUser == $secondUser || $newUser == $thirdUser)
+                                    {
+                                        continue;
+                                    }
+                                    
+                                    $findTaskCount = mysqli_query($connection, "SELECT COUNT(DISTINCT taskID) FROM tasks WHERE username='$newUser' AND projectID IN (SELECT projectID FROM belongto WHERE username='$user')");
+                                    $taskCount = mysqli_fetch_row($findTaskCount)[0];
+                                    
+                                    if ($taskCount > $highestCount)
+                                    {
+                                        $thirdHighest = $secondHighest;
+                                        $thirdUser = $secondUser;
+                                        $secondHighest = $highestCount;
+                                        $secondUser = $highestUser;
+                                        
+                                        $highestCount = $taskCount;
+                                        $highestUser = $newUser;
+                                    }
+                                    else if ($taskCount > $secondHighest)
+                                    {
+                                        $thirdHighest = $secondHighest;
+                                        $thirdUser = $secondUser;
+                                        $secondHighest = $taskCount;
+                                        $secondUser = $newUser;
+                                    }
+                                    else if($taskCount > $thirdHighest)
+                                    {
+                                        $thirdHighest = $taskCount;
+                                        $thirdUser = $newUser;
+                                    }
+                                }
+                            }
+                            
+                            if ($highestCount != 0)
+                            {
+                                echo "<tr><td><a href='account.php?user=$highestUser'>$highestUser</a></td><td>$highestCount</td></tr>";
+                                if ($secondHighest != 0)
+                                {
+                                    echo "<tr><td><a href='account.php?user=$secondUser'>$secondUser</a></td><td>$secondHighest</td></tr>";
+                                    
+                                    if($thirdHighest != 0)
+                                    {
+                                        echo "<tr><td><a href='account.php?user=$thirdUser'>$thirdUser</a></td><td>$thirdHighest</td></tr>";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                echo "<tr><td>No recommended users found!</td><td>Join a project with other users for this feature to work!</td></tr>";
+                            }
+                        ?>
+                        </tbody>
+                        </table>
                     </div>
             </div>
         </div>
