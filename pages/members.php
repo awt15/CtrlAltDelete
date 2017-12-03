@@ -131,6 +131,7 @@
 
                                 echo "<a href='account.php?user=$uname' class='list-group-item'>$fname $lname</a>";
                             }
+                            mysqli_close($connection);
                         ?>
                     </div>
 
@@ -146,6 +147,7 @@
                                 </thead>
                                 <tbody>
                         <?php
+                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
                             $highestCount= 0;
                             $highestUser = "";
                             $secondHighest = 0;
@@ -169,7 +171,8 @@
                                     }
                                     
                                     $findTaskCount = mysqli_query($connection, "SELECT COUNT(DISTINCT taskID) FROM tasks WHERE username='$newUser' AND projectID IN (SELECT projectID FROM belongto WHERE username='$user')");
-                                    $taskCount = mysqli_fetch_row($findTaskCount)[0];
+                                    $taskCount2 = mysqli_fetch_row($findTaskCount);
+                                    $taskCount = $taskCount2[0];
                                     
                                     if ($taskCount > $highestCount)
                                     {
@@ -211,7 +214,7 @@
                             }
                             else
                             {
-                                echo "<tr><td>No recommended users found!</td><td>Join a project with other users for this feature to work!</td></tr>";
+                                echo "<tr><td>No recommended users found!</td><td>Join projects with other users for this feature to work!</td></tr>";
                             }
                         ?>
                         </tbody>
