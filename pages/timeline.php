@@ -118,6 +118,106 @@
         <div class="panel panel-default">
             <div class="panel-body">
                <!--VITA ENTER STUFF HERE -->
+                <?php
+                    $user = $_SESSION['username'];
+                    $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                    $findProjects = mysqli_query($connection, "SELECT projectID FROM belongto WHERE username='$user'");
+                    $numrows = mysqli_num_rows($findProjects);
+                    $i = 0;
+                    while ($row = mysqli_fetch_row($findProjects))
+                    {
+                        if ($i == 0)
+                        {
+                            $statement = $row[0];
+                        }
+                        
+                        else
+                        {
+                            $statement .= " OR projectID=$row[0]"; 
+                        }
+                        
+                        $i = $i + 1;
+                    }
+                    $results = mysqli_query($connection, "SELECT * FROM changes WHERE projectID=$statement ORDER BY timestamp DESC");
+                    if (mysqli_num_rows($results) != 0)
+                    {
+                        while($row = mysqli_fetch_row($results))
+                        {
+                            $cid = $row[0];
+
+                            $findUser = mysqli_query($connection, "SELECT username FROM changes WHERE changeID='$cid'");
+                            $userRow = mysqli_fetch_row($findUser);
+                            $user = $userRow[0];
+
+                            $findTask = mysqli_query($connection, "SELECT taskID FROM changes WHERE changeID='$cid'");
+                            $taskRow = mysqli_fetch_row($findTask);
+                            $task = $taskRow[0];
+
+                            $findAbr = mysqli_query($connection, "SELECT abbreviation FROM tasks WHERE taskID='$task'");
+                            $abrRow = mysqli_fetch_row($findAbr);
+                            $abr = $abrRow[0];
+
+                            $changeType= mysqli_query($connection, "SELECT changeType FROM changes WHERE changeID='$cid'");
+                            $typeRow = mysqli_fetch_row($changeType);
+                            $type = $typeRow[0];
+
+                            $findDate= mysqli_query($connection, "SELECT timestamp FROM changes WHERE changeID='$cid'");
+                            $dateRow = mysqli_fetch_row($findDate);
+                            $date = $dateRow[0];
+
+                            $findLeaderName= mysqli_query($connection, "SELECT first, last FROM users WHERE username='$user'");
+                            $leaderRow = mysqli_fetch_row($findLeaderName);
+                            $leaderFirst = $leaderRow[0];
+                            $leaderLast = $leaderRow[1];
+
+                            echo "<div class='panel panel-default'>";
+                            echo "<div class='panel-body'>";
+
+                            if ($type == 1){
+                                echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> commented on </strong>";
+                                echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                $phpdate = strtotime($date);
+                                $newtime = date('g:i A', $phpdate);
+                                $newdate = date('m/d/Y', $phpdate);
+                                echo " at $newtime on $newdate";
+                            }
+
+                            else if ($type == 2){
+                                echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> created a task </strong>";
+                                echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                $phpdate = strtotime($date);
+                                $newtime = date('g:i A', $phpdate);
+                                $newdate = date('m/d/Y', $phpdate);
+                                echo " at $newtime on $newdate";
+                            }
+
+                            else if ($type == 3){
+                                echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> started working on </strong>";
+                                echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                $phpdate = strtotime($date);
+                                $newtime = date('g:i A', $phpdate);
+                                $newdate = date('m/d/Y', $phpdate);
+                                echo " at $newtime on $newdate";
+                            }
+
+                            else if ($type == 4){
+                                echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> completed </strong>";
+                                echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
+                                $phpdate = strtotime($date);
+                                $newtime = date('g:i A', $phpdate);
+                                $newdate = date('m/d/Y', $phpdate);
+                                echo " at $newtime on $newdate";
+                            }
+
+                            echo "</div>";
+                            echo "<div class='row'>";
+                            echo "<div class='col-sm-offset-8 col-sm-2'>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    }
+                 ?>
             </div>
         </div>
     </div>
