@@ -94,7 +94,7 @@
                             <a href="myTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
+                            <a href="timeline.php"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
                         </li>
                         <li>
                             <a href="search.php"><i class="fa fa-search fa-fw"></i> Search</a>
@@ -114,6 +114,62 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- ALL OF THESE NEEDS IDs -->
+                    <form style="font-size:120%;" action="search.php" method="post">
+                        <div class="form-group">
+                            <input type="text" id="search" name="search" placeholder="Enter username here..." class="form-control" required="required" oninvalid="this.setCustomValidity('This field is required.' )" oninput="setCustomValidity('')">
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-offset-10 col-sm-2">
+                                    <button class="btn btn-lg btn-primary btn-block" type = "submit" name="searchbutton">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <?php
+            if (isset($_POST['search']))
+            {                        
+                echo "<h1 class='page-header'>Results</h1>";
+                echo "<div class='col-lg-12'>";
+                echo "<table class='table'>";
+                echo "<thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Number of Mutual Projects</th>
+                    </tr>
+                </thead>";
+                
+                $search = $_POST['search'] . "%";
+                
+                $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                $user = $_SESSION['username'];
+                $findUsers = mysqli_query($connection, "SELECT username FROM users WHERE username LIKE '$search'");
+                
+                if (mysqli_num_rows($findUsers) != 0)
+                {
+                    while ($row = mysqli_fetch_row($findUsers))
+                    {
+                        $otherUser = $row[0];
+                        $findnumproj = mysqli_query($connection, "SELECT COUNT(DISTINCT projectID) FROM belongto WHERE projectID IN (SELECT projectID FROM belongto WHERE username='$user') AND projectID IN (SELECT projectID FROM belongto WHERE username='$otherUser')");
+                        $row = mysqli_fetch_row($findnumproj);
+                        $numproj = $row[0];
+                        echo "<tr><th><a href='account.php?user=$otherUser'>$otherUser</a></th><th>$numproj</th></tr>";
+                    }
+                }
+                
+                else
+                {
+                    echo "<tr><th>No Results Found</th><th>N/A</th></tr>";
+                }
+                
+                echo "</div>";
+            }
+        ?>
         </div>
         <!-- /#wrapper -->
 
