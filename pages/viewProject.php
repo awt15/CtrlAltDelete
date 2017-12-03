@@ -244,8 +244,12 @@
                 </div>
             </div>
             <div class="row">
+
                 <?php
-                    echo "<div class='col-sm-offset-8 col-sm-2'>";
+                    echo "<div class='col-sm-offset-6 col-sm-2'>";
+                    echo "<a href='members.php?proj=$project' class='btn btn-success btn-block'>View Members </a>";
+                    echo "</div>";
+                    echo "<div class='col-sm-2'>";
                     echo "<a href='createTask.php?pid=$project' class='btn btn-info btn-block'>Create a Task</a>";
                     echo "</div>";
                 ?>

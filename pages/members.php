@@ -110,81 +110,36 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Projects</h1>
+                    <h1 class="page-header">Members</h1>
                 </div>
+                <!-- /.col-lg-12 -->
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Project</th>
-                        <th>Project Lead</th>
-                        <th>Date Started</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                    $user = $_SESSION['username'];
-                    $connection = mysqli_connect("localhost", "root", "", "cen4020");
-                    $results = mysqli_query($connection, "SELECT projectID FROM belongto WHERE username='$user'");
-                    if (mysqli_num_rows($results) != 0)
-                    {
-                        while($row= mysqli_fetch_row($results))
-                        {
-                            $pid = $row[0];
-                            $findUser = mysqli_query($connection, "SELECT username FROM belongto WHERE projectID=$pid AND permissions=1");
-                            $leaderRow = mysqli_fetch_row($findUser);
-                            $leaderUser = $leaderRow[0];
-                            $findLeaderName= mysqli_query($connection, "SELECT first, last FROM users WHERE username='$leaderUser'");
-                            $leaderRow = mysqli_fetch_row($findLeaderName);
-                            $leaderFirst = $leaderRow[0];
-                            $leaderLast = $leaderRow[1];
-                            
-                            $findProjectInfo = mysqli_query($connection, "SELECT projectName, projectStart FROM projects WHERE projectID = '$pid'");
-                            $projectRow = mysqli_fetch_row($findProjectInfo);
-                            $pname = $projectRow[0];
-                            $pdate = $projectRow[1];
-                            $phpdate = strtotime($pdate);
-                            $pdate = date('m/d/Y', $phpdate);
-                            
-                            echo "<tr>";
-                            echo "<td>";
-                            echo "<a href='viewProject.php?var=$pname'>$pname</a>";
-                            echo "</td>";
-                            echo "<td>";
-                            echo "<a href='account.php?user=$leaderUser'>$leaderFirst  $leaderLast</a>";
-                            echo "</td>";
-                            echo "<td>";
-                            echo "$pdate";
-                            echo "</td>";
-                            echo "</tr>";
-                        }
-                    }
-                    else
-                    {
-                        echo "<tr>";
-                        echo "<td>";
-                        echo "No Projects";
-                        echo "</td>";
-                        echo "<td>";
-                        echo "N/A";
-                        echo "</td>";
-                        echo "<td>";
-                        echo "N/A";
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                 ?>
-                </tbody>
-            </table>
-            <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="joinProject.php" class="btn btn-info btn-block">Join A Project</a>
-                </div>
-                <div class="col-sm-2">
-                    <a href="createProject.php" class="btn btn-primary btn-block">Create A Project</a>
-                </div>
+            <!-- /.row -->
+            <div class="panel panel-default">
+                    <div class="list-group">
+                        <?php
+                            $connection = mysqli_connect("localhost", "root", "", "cen4020");
+                            $project = $_GET['proj'];
+                            $results = mysqli_query($connection, "SELECT username FROM belongto WHERE projectID = '$project'");
+                            while($row = mysqli_fetch_row($results))
+                            {
+                                $uname = $row[0];
+                                $asnameL = mysqli_query($connection,"SELECT first, last FROM users WHERE username = '$uname'");
+                                $asname = mysqli_fetch_row($asnameL);
+                                $fname = $asname[0];
+                                $lname = $asname[1];
+
+                                echo "<a href='account.php?user=$uname' class='list-group-item'>$fname $lname</a>";
+                            }
+                        ?>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Recommended</h1>
+                        <!--MARK ENTER PHP CODE HERE. SIMILAR TO THE PHP CODE UP TOP ^^ -->
+                    </div>
             </div>
-    </div>
+        </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
