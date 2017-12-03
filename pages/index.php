@@ -131,6 +131,7 @@
                                             $connection = mysqli_connect("localhost", "root", "", "cen4020");
                                             $findProjects = mysqli_query($connection, "SELECT projectID FROM belongto WHERE username='$user'");
                                             $numrows = mysqli_num_rows($findProjects);
+                                            $statement = -1;
                                             $i = 0;
                                             while ($row = mysqli_fetch_row($findProjects))
                                             {
