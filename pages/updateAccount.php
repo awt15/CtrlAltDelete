@@ -92,14 +92,12 @@
                         <li>
                             <a href="myProject.php"><i class="fa fa-folder-open fa-fw"></i> My Projects</a>
                         </li>
+                        <!-- ONLY FOR PEOPLE WHO ARE PROJECT MANAGERS --> 
                         <li>
-                            <a href="myTask.php"><i class="fa fa-bars fa-fw"></i> My Tasks</a>
+                            <a href="createTask.php"><i class="fa fa-tasks fa-fw"></i> Create a New Task</a>
                         </li>
                         <li>
-                            <a href="timeline.php"><i class="fa fa-clock-o fa-fw"></i> Timeline</a>
-                        </li>
-                        <li>
-                            <a href="serach.php"><i class="fa fa-search fa-fw"></i> Search</a>
+                            <a href="currentTask.php"><i class="fa fa-bars fa-fw"></i> Current Tasks</a>
                         </li>
                     </ul>
                 </div>
@@ -117,18 +115,35 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form style="font-size:120%;">
+                    <form action = "accountUpdate.php" method = "post" style="font-size:120%;">
                         <div class="form-group">
                             <label for="firstname">First name:</label>
-                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="<?php echo $_SESSION['first'];?>">
+                                <input type="text" id="firstName" name="firstName" class="form-control" value="<?php echo $_SESSION['first'];?>">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['last'];?></p>
+                                <input type="text" id="lastName" name="lastName" class="form-control" value="<?php echo $_SESSION['last'];?>">
+
                         </div>
                         <div class="form-group">
                             <label for="emailaddress">Email Address:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['email'];?></p>
+                                <input type="email" id="emailAddress" name="emailAddress" class="form-control" value="<?php echo $_SESSION['email'];?>">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="currentpassword">Change Password:</label>
+                                <input type="text" id="currentPassword" name="currentPassword" class="form-control" placeholder="Current Password">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="currentpassword">New Password:</label>
+                                <input type="text" id="newPassword" name="newPassword" class="form-control">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="currentpassword">Confirm New Password:</label>
+                                <input type="text" id="confirmnewPassword" name="confirmnewPassword" class="form-control">
+
                         </div>
                         <div class="form-group">
                             <label for="username">Username:</label>
