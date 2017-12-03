@@ -26,6 +26,7 @@ if (isset($_POST['email'])) {
         $_SESSION['first'] = $row[1];
         $_SESSION['last'] = $row[2];
         $_SESSION['username'] = $row[3];
+        $_SESSION['passhash'] = $row[0];
         mysqli_close($conn);
         header("Location: index.php");
         exit;
