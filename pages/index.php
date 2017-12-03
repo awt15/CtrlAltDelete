@@ -186,39 +186,28 @@
                                                     if ($type == 1){
                                                         echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> commented on </strong>";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
-                                                        $phpdate = strtotime($date);
-                                                        $newtime = date('g:i A', $phpdate);
-                                                        $newdate = date('m/d/Y', $phpdate);
-                                                        echo " at $newtime on $newdate";
                                                     }
 
                                                     else if ($type == 2){
                                                         echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> created a task </strong>";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
-                                                        $phpdate = strtotime($date);
-                                                        $newtime = date('g:i A', $phpdate);
-                                                        $newdate = date('m/d/Y', $phpdate);
-                                                        echo " at $newtime on $newdate";
                                                     }
 
                                                     else if ($type == 3){
                                                         echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> started working on </strong>";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
-                                                        $phpdate = strtotime($date);
-                                                        $newtime = date('g:i A', $phpdate);
-                                                        $newdate = date('m/d/Y', $phpdate);
-                                                        echo " at $newtime on $newdate";
                                                     }
 
                                                     else if ($type == 4){
                                                         echo "<strong><a href='account.php?user=$user'>$leaderFirst $leaderLast</a> completed </strong>";
                                                         echo "<a href=viewTask.php?var=$task>$abr-$task</a>";
-                                                        $phpdate = strtotime($date);
-                                                        $newtime = date('g:i A', $phpdate);
-                                                        $newdate = date('m/d/Y', $phpdate);
-                                                        echo " at $newtime on $newdate";
                                                     }
 
+                                                    $phpdate = strtotime($date);
+                                                    $newtime = date('g:iA', $phpdate);
+                                                    $newdate = date('l, F d', $phpdate);
+                                                    echo "<br>";
+                                                    echo "<font size='2'>$newtime • $newdate</font>";
                                                     echo "</div>";
                                                     echo "<div class='row'>";
                                                     echo "<div class='col-sm-offset-8 col-sm-2'>";
