@@ -210,6 +210,8 @@
                                                     echo "Completed";
                                                 }
                                                 echo "</td>";
+                                                $phpdate = strtotime($due);
+                                                $due = date('M d, Y', $phpdate);
                                                 echo "<td>$due</td>";
                                                 echo "</tr>";
 

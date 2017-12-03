@@ -177,11 +177,14 @@
                 </tbody>
             </table>
             <div class="row">
-                <div class="col-sm-offset-8 col-sm-2">
-                    <a href="joinProject.php" class="btn btn-info btn-block">Join A Project</a>
+                <div class="col-sm-offset-6 col-sm-2">
+                    
                 </div>
                 <div class="col-sm-2">
-                    <a href="createProject.php" class="btn btn-primary btn-block">Create A Project</a>
+                    <a href="joinProject.php" type="submit" class="btn btn-info btn-block">Join A Project</a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="createProject.php" type="submit" class="btn btn-primary btn-block">Create A Project</a>
                 </div>
             </div>
     </div>

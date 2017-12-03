@@ -135,15 +135,15 @@
                 
                 echo "<div class='form-group'>";
                 echo "<label for='projectName'>Project Name:</label>";
-                echo "<a href='viewProject.php?var=$pname'>$pname</a>";
+                echo "<a href='viewProject.php?var=$pname'> $pname</a>";
                 echo "</div>";
                 echo "<div class='form-group'>";
-                    echo "<label for='projectID'>Project ID: </label>";
-                    echo "$pid";
+                echo "<label for='projectID'>Project ID: </label>";
+                echo " $pid";
                 echo "</div>";
                 echo "<div class='form-group'>";
-                    echo "<label for='abbreviation'>Project Abbreviation:</label>";
-                    echo "$abb";
+                echo "<label for='abbreviation'>Project Abbreviation:</label>";
+                echo " $abb";
                 echo "</div>";
                 ?>
             </form>
@@ -153,20 +153,24 @@
                 //Only show these buttons if the user is admin of project
                  if ($perm != 0)
                  {
-                    echo "<div class='col-sm-offset-6 col-sm-2'>";
-                        echo "<a class='btn btn-lg btn-danger btn-block' type = 'submit' href='changeproject.php?pid=$pid'>Delete Project</a>";
+                    echo "<div class='col-sm-offset-8 col-sm-2'>";
+                    echo "<a class='btn btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
                     echo "</div>";
                     echo "<div class='col-sm-2'>";
-                        echo "<a class='btn btn-lg btn-primary btn-block' type = 'submit' href='viewProject.php'>Save</a>";
-                    echo "</div>";
-                        echo "<div class='col-sm-2'>";
-                        echo "<a class='btn btn-lg btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
+                    echo "<a class='btn btn-danger btn-block' type = 'submit' href='changeproject.php?pid=$pid'>Delete Project</a>";
                     echo "</div>";
                  }
                  else
                  {
-                     echo "<div class='col-sm-offset-8 col-sm-2'>";
-                     echo "<a class='btn btn-lg btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
+              
+                    echo "<div class='row'>";
+                    echo "<div class='col-sm-offset-8 col-sm-2'>";
+                    echo "<a class='btn btn-default btn-block' type = 'submit' href='viewProject.php?var=$pname'>Cancel</a>";
+                    echo "</div>";
+                    echo "<div class='col-sm-2'>";
+                    echo "<a class='btn btn-danger btn-block' type = 'submit' href='leaveProject.php?pid=$pid'>Leave Project</a>";
+                    echo "</div>";
+                    echo "</div>";
                  }
             ?>
             </div>
