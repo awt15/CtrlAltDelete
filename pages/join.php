@@ -20,9 +20,8 @@
         }
         
         #make sure user isnt already in project        
-        $results = mysqli_query($connection, "SELECT * FROM belongto WHERE username='$user' AND projectID='$pid'");
-        $project_exists = mysqli_query($connection, "SELECT * FROM projects WHERE projectID=$pid");
-        if (mysqli_num_rows($results) == 0 && mysqli_num_rows($project_exists) != 0)
+        $results = mysqli_query($connection, "SELECT * FROM belongto, projects WHERE belongto.username='$user' AND belongto.projectID='$pid' AND belongto.projectID=projects.projectID");
+        if (mysqli_num_rows($results) == 0)
         {
             $results = mysqli_query($connection, "INSERT INTO belongto (username, projectID, permissions) VALUES ('$user', $pid, 0)");
             if ($results)
