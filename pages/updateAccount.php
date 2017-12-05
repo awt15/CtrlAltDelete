@@ -131,18 +131,18 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="currentpassword">Change Password:</label>
-                                <input type="text" id="currentPassword" name="currentPassword" class="form-control" placeholder="Current Password">
+                            <label for="currentpassword">Current Password:</label>
+                                <input type="password" id="currentPassword" name="currentPassword" class="form-control" placeholder="Current Password">
 
                         </div>
                         <div class="form-group">
                             <label for="currentpassword">New Password:</label>
-                                <input type="text" id="newPassword" name="newPassword" class="form-control">
+                                <input type="password" id="newPassword" name="newPassword" class="form-control">
 
                         </div>
                         <div class="form-group">
                             <label for="currentpassword">Confirm New Password:</label>
-                                <input type="text" id="confirmnewPassword" name="confirmnewPassword" class="form-control">
+                                <input type="password" id="confirmnewPassword" name="confirmnewPassword" class="form-control">
 
                         </div>
                         <div class="form-group">
