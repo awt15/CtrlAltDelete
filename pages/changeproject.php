@@ -14,9 +14,11 @@
             die();
         }
     
-    $results = mysqli_query($connection, "DELETE FROM tasks WHERE projectID='$pid'");
-    $results = mysqli_query($connection, "DELETE FROM belongto WHERE projectID='$pid'");
-    $results = mysqli_query($connection, "DELETE FROM projects WHERE projectID='$pid'"); 
+    $results = mysqli_query($connection, "DELETE FROM changes WHERE projectID=$pid");
+    $results = mysqli_query($connection, "DELETE FROM comments WHERE projectID=$pid");
+    $results = mysqli_query($connection, "DELETE FROM tasks WHERE projectID=$pid");
+    $results = mysqli_query($connection, "DELETE FROM belongto WHERE projectID=$pid");
+    $results = mysqli_query($connection, "DELETE FROM projects WHERE projectID=$pid"); 
     header("Location: myProject.php");
     exit;
 ?>

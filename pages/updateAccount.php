@@ -147,15 +147,15 @@
                         </div>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <p class="form-control-static bigFont"><?php echo $_SESSION['username'];?></p>
+                            <p class="form-control-static" style="font-size:18px"><?php echo $_SESSION['username'];?></p>
                         </div>
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-sm-offset-8 col-sm-2">
-                                    <button class="btn btn-lg btn-success btn-block">Update Account</button>
+                                    <button class="btn btn-success btn-block">Update Account</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <a class="btn btn-lg btn-default btn-block" href="account.php">Cancel</a>
+                                    <a class="btn btn-default btn-block" href="account.php">Cancel</a>
                                 </div>
                             </div>
                         </div>

@@ -119,7 +119,7 @@
                     <form style="font-size:120%;">
                         <div class="form-group">
                             <label for="firstname">First name:</label>
-                            <p class="form-control-static bigFont">
+                            <p class="form-control-static" style="font-size:18px">
                             <?php
                                 //Clicked a link to another users account
                                 if (isset($_GET['user']))
@@ -147,15 +147,15 @@
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name:</label>
-                            <p class="form-control-static bigFont"><?php echo $last;?></p>
+                            <p class="form-control-static" style="font-size:18px"><?php echo $last;?></p>
                         </div>
                         <div class="form-group">
                             <label for="emailaddress">Email Address:</label>
-                            <p class="form-control-static bigFont"><?php echo $email;?></p>
+                            <p class="form-control-static" style="font-size:18px"><?php echo $email;?></p>
                         </div>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <p class="form-control-static bigFont"><?php echo $user;?></p>
+                            <p class="form-control-static" style="font-size:18px"><?php echo $user;?></p>
                         </div>
                         <?php
                             //Edit account button should only show if the user is on their own page
@@ -164,7 +164,7 @@
                                 echo "<div class='panel-footer'>";
                                     echo "<div class='row'>";
                                         echo "<div class='col-sm-offset-10 col-sm-2'>";
-                                            echo "<a class='btn btn-lg btn-primary btn-block' href='updateAccount.php'>Edit Account</a>";
+                                            echo "<a class='btn btn-primary btn-block' href='updateAccount.php'>Edit Account</a>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";

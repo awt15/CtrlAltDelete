@@ -128,7 +128,6 @@
                                 $asname = mysqli_fetch_row($asnameL);
                                 $fname = $asname[0];
                                 $lname = $asname[1];
-
                                 echo "<a href='account.php?user=$uname' class='list-group-item'>$fname $lname</a>";
                             }
                             mysqli_close($connection);
